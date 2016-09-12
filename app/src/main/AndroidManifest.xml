@@ -8,6 +8,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -15,22 +16,45 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".start_activity"
             android:label="@string/Start_Activity_Label"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="android.mi.ur.de.urfit.MainActivity"/>
+        </activity>
+
         <activity android:name=".ergebnis_activity"
             android:label="@string/Ergebnis_Activity_Label"
-            android:parentActivityName=".MainActivity"/>
-        <activity
-            android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="android.mi.ur.de.urfit.MainActivity"/>
+        </activity>
+
         <activity android:name=".profile_Activity"
-            android:label="@string/profile_Activity_Label"/>
+            android:label="@string/profile_Activity_Label"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="android.mi.ur.de.urfit.MainActivity"/>
+        </activity>
+
         <activity android:name=".hilfe_activity"
             android:label="@string/hilfe_Activity_Label"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="android.mi.ur.de.urfit.MainActivity"/>
+        </activity>
+
+
     </application>
 
 </manifest>

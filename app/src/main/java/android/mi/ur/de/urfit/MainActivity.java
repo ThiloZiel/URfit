@@ -9,17 +9,15 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
 
 
-    Button startButton = (Button) findViewById(R.id.startButton);
-    Button ergebnisButton = (Button) findViewById(R.id.ergebnisButton);
-    Button hilfeButton = (Button) findViewById(R.id.hilfeButton);
-    Button settingsButton = (Button) findViewById(R.id.einstellungsButton);
-    Button profilButton = (Button) findViewById(R.id.profilButton);
+    Button startButton;
+    Button ergebnisButton;
+    Button hilfeButton;
+    Button profilButton;
 
-    Intent startIntent = new Intent(MainActivity.this,start_activity.class);
-    Intent ergebnisIntent = new Intent(MainActivity.this,ergebnis_activity.class);
-    Intent hilfeIntent = new Intent(MainActivity.this,hilfe_activity.class);
-    Intent settingsIntent = new Intent(MainActivity.this,SettingsActivity.class);
-    Intent profileIntent = new Intent(MainActivity.this,profile_Activity.class);
+    Intent startIntent;
+    Intent ergebnisIntent;
+    Intent hilfeIntent;
+    Intent profileIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,13 +31,14 @@ public class MainActivity extends AppCompatActivity {
         initStartButton();
         initErgebnisButton();
         initHilfeButton();
-        initSettingsButton();
         initProfileButton();
 
 
     }
 
     private void initProfileButton() {
+        profilButton = (Button) findViewById(R.id.profilButton);
+        profileIntent = new Intent(MainActivity.this,profile_Activity.class);
         profilButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,16 +47,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void initSettingsButton() {
-        settingsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(settingsIntent);
-            }
-        });
-    }
-
     private void initHilfeButton() {
+        hilfeButton = (Button) findViewById(R.id.hilfeButton);
+        hilfeIntent = new Intent(MainActivity.this,hilfe_activity.class);
         hilfeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initErgebnisButton() {
+        ergebnisIntent = new Intent(MainActivity.this,ergebnis_activity.class);
+        ergebnisButton = (Button) findViewById(R.id.ergebnisButton);
         ergebnisButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initStartButton() {
+        startButton = (Button) findViewById(R.id.startButton);
+        startIntent = new Intent(MainActivity.this,start_activity.class);
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
