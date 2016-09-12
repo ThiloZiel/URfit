@@ -10,41 +10,43 @@
     tools:context="android.mi.ur.de.urfit.MainActivity">
 
     <Button
+        android:background="@color/DodgerBlue4"
+        android:textColor="@color/GhostWhite"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Start Workout"
+        android:layout_height="@dimen/Button_Height"
+        android:text="@string/start_workout_Button"
         android:id="@+id/startButton"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Meine Ergebnisse"
+        android:layout_width="@dimen/Button_Width"
+        android:layout_height="@dimen/Button_Height"
+        android:text="@string/meine_ergebnisse_Button"
         android:id="@+id/ErgebnisButton"
         android:layout_below="@+id/startButton"
         android:layout_alignParentStart="true" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Profil"
+        android:layout_width="@dimen/Button_Width"
+        android:layout_height="@dimen/Button_Height"
+        android:text="@string/profil_Button"
         android:id="@+id/profilButton"
         android:layout_below="@+id/ErgebnisButton"
         android:layout_alignParentStart="true" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Einstellungen"
+        android:layout_width="@dimen/Button_Width"
+        android:layout_height="@dimen/Button_Height"
+        android:text="@string/einstellungen_Button"
         android:id="@+id/einstellungsButton"
         android:layout_below="@id/ErgebnisButton"
         android:layout_toEndOf="@+id/profilButton" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hilfe"
+        android:layout_width="@dimen/Button_Width"
+        android:layout_height="@dimen/Button_Height"
+        android:text="@string/hilfe_Button"
         android:id="@+id/hilfeButton"
         android:layout_below="@+id/startButton"
         android:layout_toEndOf="@+id/ErgebnisButton" />

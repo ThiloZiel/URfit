@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">URfit</string>
+    <string name="start_workout_Button">Start Workout</string>
+    <string name="meine_ergebnisse_Button">Meine Ergebnisse</string>
+    <string name="profil_Button">Profil</string>
+    <string name="einstellungen_Button">Einstellungen</string>
+    <string name="hilfe_Button">Hilfe</string>
 </resources>
