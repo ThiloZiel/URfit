@@ -15,6 +15,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".start_activity"
+            android:label="@string/Start_Activity_Label"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".ergebnis_activity"
+            android:label="@string/Ergebnis_Activity_Label"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".profile_Activity"
+            android:label="@string/profile_Activity_Label"/>
+        <activity android:name=".hilfe_activity"
+            android:label="@string/hilfe_Activity_Label"
+            android:parentActivityName=".MainActivity"/>
     </application>
 
 </manifest>
