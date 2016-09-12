@@ -9,5 +9,6 @@ public class start_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_activity);
+        int a = 2;
     }
 }
