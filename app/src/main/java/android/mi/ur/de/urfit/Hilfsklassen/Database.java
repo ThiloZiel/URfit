@@ -1,4 +1,4 @@
-package android.mi.ur.de.urfit;
+package android.mi.ur.de.urfit.Hilfsklassen;
 
 
 import android.content.ContentValues;

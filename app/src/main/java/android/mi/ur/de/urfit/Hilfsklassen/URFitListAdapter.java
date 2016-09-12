@@ -1,7 +1,9 @@
-package android.mi.ur.de.urfit;
+package android.mi.ur.de.urfit.Hilfsklassen;
 
 
 import android.content.Context;
+import android.mi.ur.de.urfit.Hilfsklassen.URFitItem;
+import android.mi.ur.de.urfit.R;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
