@@ -68,4 +68,8 @@
     <string name="Ergebnis_Activity_Label">Auswertung</string>
     <string name="profile_Activity_Label">Mein Profil</string>
     <string name="hilfe_Activity_Label">hilfe</string>
+    <string name="stop_workout_Button">Stop Workout!</string>
+    <string name="anzahl_schritte_view">bisher gelaufene Schritte: -</string>
+    <string name="mein_persoehnliches_tagesziel_text">Mein persöhnliches Tagesziel:</string>
+    <string name="Hauptziel_text">Mein großes Ziel:</string>
 </resources>

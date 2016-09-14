@@ -1,34 +1,40 @@
 package android.mi.ur.de.urfit.Activitys;
 
 import android.content.Intent;
+import android.mi.ur.de.urfit.Hilfsklassen.Database;
+import android.mi.ur.de.urfit.Hilfsklassen.URFitItem;
+import android.mi.ur.de.urfit.Hilfsklassen.URFitListAdapter;
 import android.mi.ur.de.urfit.R;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity{
 
 
-    Button startButton;
-    Button ergebnisButton;
-    Button hilfeButton;
-    Button profilButton;
+    private Button startButton;
+    private Button ergebnisButton;
+    private Button hilfeButton;
+    private Button profilButton;
 
-    Intent startIntent;
-    Intent ergebnisIntent;
-    Intent hilfeIntent;
-    Intent profileIntent;
+    private Intent startIntent;
+    private Intent ergebnisIntent;
+    private Intent hilfeIntent;
+    private Intent profileIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initButtons();
+        initUI();
 
     }
 
-    private void initButtons() {
+    private void initUI() {
         initStartButton();
         initErgebnisButton();
         initHilfeButton();
