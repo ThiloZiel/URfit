@@ -9,4 +9,48 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".Activitys.profile_Activity">
 
+
+    <TextView
+        android:id="@+id/name_view"
+        android:text="Max Mustermann"
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/profilBild"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:padding="5dp"/>
+
+    <TextView
+        android:id="@+id/Size_View"
+        android:text="Größe: "
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name_view"
+        android:padding="5dp"/>
+
+    <TextView
+        android:id="@+id/Weight_View"
+        android:text="Gewicht: "
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Size_View"
+        android:padding="5dp"/>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/DodgerBlue4"
+        android:text="Meine Ziele"
+        android:textSize="20sp"
+        android:textColor="@color/GhostWhite"
+        android:layout_below="@id/Weight_View"
+        android:padding="5dp"/>
 </RelativeLayout>

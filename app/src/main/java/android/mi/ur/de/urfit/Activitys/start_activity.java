@@ -20,11 +20,14 @@ public class start_activity extends AppCompatActivity implements SensorEventList
     private Sensor mStepCounterSensor;
     private Sensor mStepDetectorSensor;
 
-    TextView stepView;
-    TextView dailyAimView;
-    TextView mainAimView;
-    Button stopButton;
-    Intent stopButtonIntent;
+    private int value;
+
+    private TextView stepView;
+    private TextView dailyAimView;
+    private TextView mainAimView;
+    private Button stopButton;
+
+    private Intent stopButtonIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +59,7 @@ public class start_activity extends AppCompatActivity implements SensorEventList
     private void initStopButton() {
         stopButton = (Button) findViewById(R.id.stop_Button);
         stopButtonIntent = new Intent(start_activity.this,MainActivity.class);
+        stopButtonIntent.putExtra("Schritte",value);
         stopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,7 +73,7 @@ public class start_activity extends AppCompatActivity implements SensorEventList
     public void onSensorChanged(SensorEvent event) {
         Sensor sensor = event.sensor;
         float[] values = event.values;
-        int value = -1;
+        value = -1;
 
         if (values.length > 0){
             value = (int) values[0];
