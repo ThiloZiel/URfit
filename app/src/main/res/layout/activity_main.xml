@@ -20,6 +20,8 @@
         android:layout_alignParentStart="true" />
 
     <Button
+        android:background="@color/GreenButton"
+        android:textColor="@color/GhostWhite"
         android:layout_width="@dimen/Button_Width"
         android:layout_height="@dimen/Button_Height"
         android:text="@string/meine_ergebnisse_Button"
@@ -30,12 +32,15 @@
     <Button
         android:layout_width="@dimen/Button_Width"
         android:layout_height="@dimen/Button_Height"
+        android:background="#DBC167"
         android:text="@string/profil_Button"
         android:id="@+id/profilButton"
         android:layout_below="@+id/ergebnisButton"
         android:layout_alignParentStart="true" />
 
     <Button
+        android:background="#434196"
+        android:textColor="@color/GhostWhite"
         android:layout_width="@dimen/Button_Width"
         android:layout_height="@dimen/Button_Height"
         android:text="@string/einstellungen_Button"
@@ -44,6 +49,8 @@
         android:layout_toEndOf="@+id/profilButton" />
 
     <Button
+        android:background="#4F0234"
+        android:textColor="@color/GhostWhite"
         android:layout_width="@dimen/Button_Width"
         android:layout_height="@dimen/Button_Height"
         android:text="@string/hilfe_Button"

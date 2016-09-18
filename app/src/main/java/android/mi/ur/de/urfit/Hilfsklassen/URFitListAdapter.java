@@ -43,7 +43,7 @@ public class URFitListAdapter extends ArrayAdapter<URFitItem>{
             TextView date = (TextView) v.findViewById(R.id.item_date);
 
             steps.setText(task.getSteps());
-            steps.setText(task.getCalories());
+            calories.setText(task.getCalories());
             date.setText(task.getFormattedDate());
         }
 
