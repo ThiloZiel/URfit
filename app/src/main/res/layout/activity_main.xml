@@ -20,7 +20,7 @@
         android:layout_alignParentStart="true" />
 
     <Button
-        android:background="@color/GreenButton"
+        android:background="@color/ErgebnisButtonColor"
         android:textColor="@color/GhostWhite"
         android:layout_width="@dimen/Button_Width"
         android:layout_height="@dimen/Button_Height"
