@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -16,15 +17,19 @@ import java.util.Date;
 import java.util.Locale;
 
 public class Database {
+    public static final String LOG_TAGS = dbOpenHelper.class.getSimpleName();
+    public static final String LOG_TAG = Database.class.getSimpleName();
+
+
     private static final String DATABASE_NAME = "urfit.db";
     private static final int DATABASE_VERSION = 1;
 
-    private static final String DATABASE_TABLE = "Items";
+    private static final String DATABASE_TABLE = "activity_list";
 
     public static final String KEY_ID = "_id";
     public static final String KEY_DATE ="date";
-    public static final String KEY_STEPS = "Steps";
-    public static final String KEY_CALORIES = "Calories";
+    public static final String KEY_STEPS = "steps";
+    public static final String KEY_CALORIES = "calories";
 
     public static final int COLUMN_DATE_INDEX = 1;
     public static final int COLUMN_STEPS_INDEX = 2;
@@ -40,14 +45,18 @@ public class Database {
 
     public void open() throws SQLException{
         try {
+            Log.d(LOG_TAG, "Eine Referenz auf die Datenbank wird jetzt angefragt.");
             db = dbHelper.getWritableDatabase();
         } catch (SQLException e){
+            Log.d(LOG_TAG, "Datenbank-Referenz erhalten. Pfad zur Datenbank: " + db.getPath());
             db = dbHelper.getReadableDatabase();
         }
     }
 
     public void close() {
+
         db.close();
+        Log.d(LOG_TAG, "Datenbank mit Hilfe des DbHelpers geschlossen.");
     }
 
     public long insertItem(URFitItem item){
@@ -97,18 +106,25 @@ public class Database {
 
 
     private class dbOpenHelper extends SQLiteOpenHelper {
-        private static final String DATABASE_CREATE = "create table"
+        private static final String DATABASE_CREATE = "CREATE TABLE "
                 + DATABASE_TABLE + " (" + KEY_ID
-                + " integer primary key autoincrement, " + KEY_DATE
-                + "text, " + KEY_STEPS + "text, " + KEY_CALORIES + "text);";
+                + " INTEGER PRIMARY KEY AUTOINCREMENT, " + KEY_DATE
+                + " TEXT, " + KEY_STEPS + " TEXT, " + KEY_CALORIES + " TEXT);";
 
         public dbOpenHelper(Context c, String dbname, SQLiteDatabase.CursorFactory factory, int version){
             super(c, dbname, factory, version);
+            Log.d(LOG_TAGS, "DbHelper hat die Datenbank: " + getDatabaseName() + " erzeugt.");
         }
 
         @Override
         public void onCreate(SQLiteDatabase db) {
-            db.execSQL(DATABASE_CREATE);
+            try {
+                Log.d(LOG_TAGS, "Die Tabelle wird mit SQL-Befehl: " + DATABASE_CREATE + " angelegt.");
+                db.execSQL(DATABASE_CREATE);
+            }
+            catch (Exception ex) {
+                Log.e(LOG_TAGS, "Fehler beim Anlegen der Tabelle: " + ex.getMessage());
+            }
         }
 
         @Override

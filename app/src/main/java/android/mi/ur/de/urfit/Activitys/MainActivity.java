@@ -10,6 +10,7 @@ import android.os.Parcelable;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -27,11 +28,24 @@ public class MainActivity extends AppCompatActivity{
     private Intent hilfeIntent;
     private Intent profileIntent;
 
+    //Database
+
+    private Database dataSource;
+    public static final String LOG_TAG = MainActivity.class.getSimpleName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initUI();
+
+        dataSource = new Database(this);
+
+        Log.d(LOG_TAG, "Die Datenquelle wird geöffnet.");
+        dataSource.open();
+
+        Log.d(LOG_TAG, "Die Datenquelle wird geschlossen.");
+        dataSource.close();
 
     }
 
