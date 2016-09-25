@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity{
 
     //Database
 
-    private Database dataSource;
+    public static Database dataSource;
     public static final String LOG_TAG = MainActivity.class.getSimpleName();
 
     @Override
@@ -44,11 +44,12 @@ public class MainActivity extends AppCompatActivity{
         Log.d(LOG_TAG, "Die Datenquelle wird geöffnet.");
         dataSource.open();
 
-        Log.d(LOG_TAG, "Die Datenquelle wird geschlossen.");
-        dataSource.close();
-
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
 
     private void initUI() {
         initStartButton();
@@ -95,11 +96,18 @@ public class MainActivity extends AppCompatActivity{
     private void initStartButton() {
         startButton = (Button) findViewById(R.id.startButton);
         startIntent = new Intent(MainActivity.this,start_activity.class);
+        startIntent.putExtra("Database", String.valueOf(dataSource));
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(startIntent);
             }
         });
+    }
+
+    protected void onStop(){
+        super.onStop();
+        Log.d(LOG_TAG, "Die Datenquelle wird geschlossen.");
+        dataSource.close();
     }
 }

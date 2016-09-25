@@ -60,13 +60,13 @@ public class Database {
     }
 
     public long insertItem(URFitItem item){
-        ContentValues newToDoValues = new ContentValues();
+        ContentValues newURFitValues = new ContentValues();
 
-        newToDoValues.put(KEY_DATE, item.getFormattedDate());
-        newToDoValues.put(KEY_STEPS, item.getSteps());
-        newToDoValues.put(KEY_CALORIES, item.getCalories());
+        newURFitValues.put(KEY_DATE, item.getFormattedDate());
+        newURFitValues.put(KEY_STEPS, item.getSteps());
+        newURFitValues.put(KEY_CALORIES, item.getCalories());
 
-        return db.insert(DATABASE_TABLE, null, newToDoValues);
+        return db.insert(DATABASE_TABLE, null, newURFitValues);
     }
 
     public void removeItem(URFitItem item) {

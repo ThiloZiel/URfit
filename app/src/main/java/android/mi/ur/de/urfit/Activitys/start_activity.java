@@ -6,6 +6,8 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.mi.ur.de.urfit.Hilfsklassen.Calculator;
+import android.mi.ur.de.urfit.Hilfsklassen.URFitItem;
 import android.mi.ur.de.urfit.R;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,21 +15,45 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class start_activity extends AppCompatActivity implements SensorEventListener {
+
+    // Quelle timer: http://www.tippscom.de/wie-du-eine-stoppuhr-app-in-android-programmierst/
 
 
     private SensorManager mSensorManager;
     private Sensor mStepCounterSensor;
     private Sensor mStepDetectorSensor;
 
-    private int value;
+
 
     private TextView stepView;
+    private TextView timeView;
     private TextView dailyAimView;
     private TextView mainAimView;
     private Button stopButton;
 
     private Intent stopButtonIntent;
+
+    private double distance;
+    private int steps;
+    private double time;
+    private double kCal;
+    private URFitItem nextURFitItem;
+
+    public static final long SLEEPTIME = 10;
+    private boolean running;
+    private Thread refreshThread;
+
+    private Calculator calc;
+    private Calendar cal;
+    private int mYear;
+    private int mMonth;
+    private int mDay;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +61,41 @@ public class start_activity extends AppCompatActivity implements SensorEventList
         setContentView(R.layout.activity_start_activity);
         initUI();
         initSensors();
+        initTimeCounter();
+        initCalculator();
+        initCalendar();
 
     }
+
+    /*
+    initCalendar()
+    * initialisiert den Kalender
+    * holt Jahr,Monat,Tag und speichert diese in den zugehörigen Variablen
+     */
+    private void initCalendar() {
+        cal = Calendar.getInstance();
+        mYear = cal.get(Calendar.YEAR);
+        mMonth = cal.get(Calendar.MONTH);
+        mDay = cal.get(Calendar.DAY_OF_MONTH);
+    }
+
+    private void initCalculator() {
+        calc = new Calculator();
+    }
+
+    /*
+    initTimeCounter() setzt die Anfangswerte für den Timer und startet den Timer sobald die Activity aufgerufen wird
+     */
+
+    private void initTimeCounter() {
+        running = true;
+        time = 0;
+        initThread();
+    }
+
+    /*
+    initSensors() stellt die nötigen Sensoren bereit
+     */
 
     private void initSensors() {
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -50,16 +109,24 @@ public class start_activity extends AppCompatActivity implements SensorEventList
 
     }
 
+    /*
+    initTextViews initalisiert die einzelnen TextViews
+     */
+
     private void initTextViews() {
         stepView = (TextView) findViewById(R.id.number_Steps_View);
+        timeView = (TextView) findViewById(R.id.time_View);
         dailyAimView = (TextView) findViewById(R.id.persöhnliches_Tages_Ziel_View);
         mainAimView = (TextView) findViewById(R.id.persöhnliches_Hauptziel);
     }
 
+    /*
+    StopButton kehrt zur MainActivity zurück und speichert das Workout in der Datenbank
+     */
+
     private void initStopButton() {
         stopButton = (Button) findViewById(R.id.stop_Button);
         stopButtonIntent = new Intent(start_activity.this,MainActivity.class);
-        stopButtonIntent.putExtra("Schritte",value);
         stopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,18 +136,32 @@ public class start_activity extends AppCompatActivity implements SensorEventList
 
     }
 
+    /*
+    calc Values berechnet die benötigten Werte für das nächste URFit Item
+
+    wird bei verwendung des Stop buttons ausgelöst um die endgültigen Werte zu verwenden
+     */
+
+    private void calcValues() {
+        //strecke in KM
+        distance =  (steps * 74)/1000;
+        //werte für Calculator setzten (Entfernung,Zeit,Pausen)
+        calc.setValues(distance,time,0);
+        kCal = calc.calculateKcal();
+    }
+
     @Override
     public void onSensorChanged(SensorEvent event) {
         Sensor sensor = event.sensor;
         float[] values = event.values;
-        value = -1;
+        steps = -1;
 
         if (values.length > 0){
-            value = (int) values[0];
+            steps = (int) values[0];
         }
 
         if(sensor.getType() == Sensor.TYPE_STEP_DETECTOR){
-            stepView.setText("Bisher gelaufene Schritte: " + value);
+            stepView.setText("Bisher gelaufene Schritte: " + steps);
         }
     }
 
@@ -97,9 +178,50 @@ public class start_activity extends AppCompatActivity implements SensorEventList
 
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        //hier kommt der Fehler warum es abstürzt
+
+        calcValues();
+        nextURFitItem = new URFitItem(""+steps,""+kCal,mDay,mMonth,mYear);
+        MainActivity.dataSource.insertItem(nextURFitItem);
+    }
+
     protected void onStop(){
         super.onStop();
         mSensorManager.unregisterListener(this,mStepCounterSensor);
         mSensorManager.unregisterListener(this,mStepDetectorSensor);
+        calcValues();
+        nextURFitItem = new URFitItem(""+steps,""+kCal,mDay,mMonth,mYear);
+        MainActivity.dataSource.insertItem(nextURFitItem);
+    }
+
+    /*
+    initThread
+    zählt die Sekunden, indem es immer 0.01 Sekunden zuzählt und dann genau diese Zeit wartet
+     */
+
+    public void initThread() {
+        refreshThread = new Thread(new Runnable() {
+            public void run() {
+                while (running) {
+                    time = time + 0.01;
+                    try {
+                        Thread.sleep(SLEEPTIME);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(MainActivity.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            timeView.setText(getString(R.string.time_string, String.format("%.2f", time)));
+                        }
+                    });
+
+                }
+            }
+        });
+        refreshThread.start();
     }
 }
