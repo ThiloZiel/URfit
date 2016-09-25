@@ -70,6 +70,20 @@
     <string name="hilfe_Activity_Label">hilfe</string>
     <string name="stop_workout_Button">Stop Workout!</string>
     <string name="anzahl_schritte_view">bisher gelaufene Schritte: -</string>
-    <string name="mein_persoehnliches_tagesziel_text">Mein persöhnliches Tagesziel:</string>
+    <string name="mein_persoehnliches_tagesziel_text">Mein persönliches Tagesziel:</string>
     <string name="Hauptziel_text">Mein großes Ziel:</string>
+
+
+    <!-- Manuelles Tracking-->
+    <!-- TextViews-->
+    <string name="workout_activity">Aktivität:</string>
+    <string name="time_spent">Dauer:</string>
+    <string name="activity_time">Startzeit:</string>
+    <string name="calories_loss">Kalorien:</string>
+    <string name="button_add_activity">Aktivität hinzufügen</string>
+
+    <!-- EditTexts-->
+    <string name="edit_activity">Durchgeführte Aktivität</string>
+    <string name="edit_time_spent">Geschätzte Dauer</string>
+    <string name="edit_start_time">Startzeit festlegen</string>
 </resources>
