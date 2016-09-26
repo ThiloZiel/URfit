@@ -106,8 +106,8 @@ public class MainActivity extends AppCompatActivity{
     }
 
     protected void onDestroy(){
-        super.onStop();
         Log.d(LOG_TAG, "Die Datenquelle wird geschlossen.");
         dataSource.close();
+        super.onStop();
     }
 }
