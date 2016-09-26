@@ -121,7 +121,7 @@ public class start_activity extends AppCompatActivity implements SensorEventList
     }
 
     /*
-    StopButton kehrt zur MainActivity zurück und speichert das Workout in der Datenbank
+    StopButton kehrt zur MainActivity zurück
      */
 
     private void initStopButton() {
