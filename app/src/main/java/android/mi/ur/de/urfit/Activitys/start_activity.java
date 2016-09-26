@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.text.NumberFormat;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -54,17 +55,25 @@ public class start_activity extends AppCompatActivity implements SensorEventList
     private int mMonth;
     private int mDay;
 
+    private NumberFormat n;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_activity);
+        initNumberFormat();
         initUI();
         initSensors();
         initTimeCounter();
         initCalculator();
         initCalendar();
 
+    }
+
+    private void initNumberFormat() {
+        n = NumberFormat.getInstance();
+        n.setMaximumFractionDigits(2);
     }
 
     /*
@@ -143,11 +152,16 @@ public class start_activity extends AppCompatActivity implements SensorEventList
      */
 
     private void calcValues() {
-        //strecke in KM
-        distance =  (steps * 74)/1000;
-        //werte für Calculator setzten (Entfernung,Zeit,Pausen)
-        calc.setValues(distance,time,0);
-        kCal = calc.calculateKcal();
+        if(steps == 0){
+            distance = 0;
+            kCal = 0;
+        } else {
+            //strecke in KM
+            distance = (steps * 74) / 1000;
+            //werte für Calculator setzten (Entfernung,Zeit,Pausen)
+            calc.setValues(distance, time, 0);
+            kCal = calc.calculateKcal();
+        }
     }
 
     @Override
@@ -181,12 +195,6 @@ public class start_activity extends AppCompatActivity implements SensorEventList
     @Override
     protected void onPause() {
         super.onPause();
-
-        //hier kommt der Fehler warum es abstürzt
-
-        calcValues();
-        nextURFitItem = new URFitItem(""+steps,""+kCal,mDay,mMonth,mYear);
-        MainActivity.dataSource.insertItem(nextURFitItem);
     }
 
     protected void onStop(){
@@ -194,7 +202,7 @@ public class start_activity extends AppCompatActivity implements SensorEventList
         mSensorManager.unregisterListener(this,mStepCounterSensor);
         mSensorManager.unregisterListener(this,mStepDetectorSensor);
         calcValues();
-        nextURFitItem = new URFitItem(""+steps,""+kCal,mDay,mMonth,mYear);
+        nextURFitItem = new URFitItem(""+steps,n.format(kCal),mDay,mMonth,mYear);
         MainActivity.dataSource.insertItem(nextURFitItem);
     }
 

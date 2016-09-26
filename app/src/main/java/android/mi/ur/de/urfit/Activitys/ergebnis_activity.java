@@ -11,7 +11,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class ergebnis_activity extends AppCompatActivity implements View.OnClickListener {
+public class ergebnis_activity extends AppCompatActivity {
 
     ListView OverAll;
     ArrayList<URFitItem> items = new ArrayList<>();
@@ -49,11 +49,6 @@ public class ergebnis_activity extends AppCompatActivity implements View.OnClick
                 return false;
             }
         });
-    }
-
-    @Override
-    public void onClick(View v) {
-
     }
 
     private void removeTaskAtPosition(int position) {
