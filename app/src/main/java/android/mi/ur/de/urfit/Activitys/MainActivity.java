@@ -36,16 +36,22 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initDB();
         initUI();
 
-        dataSource = new Database(this);
 
-        Log.d(LOG_TAG, "Die Datenquelle wird geöffnet.");
-        dataSource.open();
+    }
 
+    protected void onDestroy() {
         Log.d(LOG_TAG, "Die Datenquelle wird geschlossen.");
         dataSource.close();
+        super.onDestroy();
+    }
 
+    private void initDB(){
+        dataSource = new Database(this);
+        Log.d(LOG_TAG, "Die Datenquelle wird geöffnet.");
+        dataSource.open();
     }
 
     private void initUI() {
