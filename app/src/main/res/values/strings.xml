@@ -9,6 +9,11 @@
 
     <!-- Strings related to Settings -->
 
+    <string name="ergebnis_View_text">deine bisherigen Aktivitäten</string>
+    <string name="gelaufene_zeit_view">Zeit: - </string>
+    <string name="time_string">%1$s</string>
+
+
     <!-- Example General settings -->
     <string name="pref_header_general">General</string>
 
@@ -85,5 +90,21 @@
     <!-- EditTexts-->
     <string name="edit_activity">Durchgeführte Aktivität</string>
     <string name="edit_time_spent">Geschätzte Dauer</string>
-    <string name="edit_start_time">Startzeit festlegen</string>
+    <string name="edit_date">Startzeit festlegen</string>
+
+    <!-- Profil -->
+    <!-- TextViews -->
+    <string name="profil_age">Alter:</string>
+    <string name="profil_gender">Geschlecht:</string>
+    <string name="profil_size">Größe:</string>
+    <string name="profil_weight">Gewicht:</string>
+    <string name="profil_steplength">Schritttlänge:</string>
+    <string name="button_add_profil">Profildaten speichern</string>
+
+    <!-- EditTexts -->
+    <string name="edit_age">Enter Age</string>
+    <string name="edit_gender">Enter Gender</string>
+    <string name="edit_size">Enter Size</string>
+    <string name="edit_weight">Enter Weight</string>
+    <string name="edit_steplength">Enter Step Length</string>
 </resources>
