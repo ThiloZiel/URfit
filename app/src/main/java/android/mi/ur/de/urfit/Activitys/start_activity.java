@@ -134,7 +134,7 @@ public class start_activity extends AppCompatActivity implements SensorEventList
      */
 
     private void initStopButton() {
-        stopButton = (Button) findViewById(R.id.stop_Button);
+        stopButton = (Button) findViewById(R.id.addActivityButton);
         stopButtonIntent = new Intent(start_activity.this,MainActivity.class);
         stopButton.setOnClickListener(new View.OnClickListener() {
             @Override

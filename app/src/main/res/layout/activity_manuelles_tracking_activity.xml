@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_manuelles_tracking_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".Activitys.manuellesTracking_activity">
+    tools:context="android.mi.ur.de.urfit.Activitys.manuellesTracking_activity">
 
     <TextView
-        android:id="@+id/activity_done"
+        android:id="@+id/distance_done"
         android:text="@string/workout_activity"
         android:textSize="26sp"
         android:layout_width="match_parent"
@@ -21,11 +22,11 @@
         android:paddingRight="8dp"/>
 
     <EditText
-        android:id="@+id/editText_activity"
+        android:id="@+id/editText_distance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="@string/edit_activity"
-        android:layout_below="@id/activity_done"
+        android:layout_below="@id/distance_done"
         android:inputType="number"
         android:layout_weight="1" />
 
@@ -35,7 +36,7 @@
         android:textSize="26sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editText_activity"
+        android:layout_below="@id/editText_distance"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
         android:paddingLeft="8dp"
@@ -52,7 +53,7 @@
 
 
     <TextView
-        android:id="@+id/time_activitiy"
+        android:id="@+id/date_activitiy"
         android:text="@string/activity_time"
         android:textSize="26sp"
         android:layout_width="match_parent"
@@ -67,9 +68,9 @@
         android:id="@+id/editText_activity_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/edit_start_time"
-        android:layout_below="@+id/time_activitiy"
-        android:inputType="number"
+        android:hint="@string/edit_date"
+        android:layout_below="@+id/date_activitiy"
+        android:inputType="datetime"
         android:layout_weight="1" />
 
     <TextView
@@ -86,7 +87,7 @@
 
 
     <Button
-        android:id="@+id/stop_Button"
+        android:id="@+id/addActivityButton"
         android:textColor="@color/GhostWhite"
         android:background="@color/red3"
         android:text="@string/button_add_activity"

@@ -77,15 +77,16 @@
 
     <!-- Manuelles Tracking-->
     <!-- TextViews-->
-    <string name="workout_activity">Aktivität:</string>
+    <string name="workout_activity">Entferung</string>
     <string name="time_spent">Dauer:</string>
-    <string name="activity_time">Startzeit:</string>
+    <string name="activity_time">Datum</string>
     <string name="calories_loss">Kalorien:</string>
     <string name="button_add_activity">Aktivität hinzufügen</string>
 
     <!-- EditTexts-->
-    <string name="edit_activity">Durchgeführte Aktivität</string>
+    <string name="edit_activity">gelaufene Entfernung</string>
     <string name="edit_time_spent">Geschätzte Dauer</string>
-    <string name="edit_start_time">Startzeit festlegen</string>
+    <string name="edit_date">Datum festlegen</string>
     <string name="gelaufene_zeit_view">gelaufene Zeit</string>
+    <string name="ergebnis_View_text">deine bisherigen Aktivitäten</string>
 </resources>

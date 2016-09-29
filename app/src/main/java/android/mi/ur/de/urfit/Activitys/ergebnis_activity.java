@@ -1,5 +1,6 @@
 package android.mi.ur.de.urfit.Activitys;
 
+import android.content.Intent;
 import android.mi.ur.de.urfit.Hilfsklassen.URFitItem;
 import android.mi.ur.de.urfit.Hilfsklassen.URFitListAdapter;
 import android.mi.ur.de.urfit.R;
@@ -7,15 +8,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class ergebnis_activity extends AppCompatActivity {
+public class ergebnis_activity extends AppCompatActivity{
 
-    ListView OverAll;
-    ArrayList<URFitItem> items = new ArrayList<>();
-    URFitListAdapter adapter;
+    private ListView OverAll;
+    private ArrayList<URFitItem> items = new ArrayList<>();
+    private URFitListAdapter adapter;
+    private ImageButton addButton;
+    private Intent addButtonIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +33,18 @@ public class ergebnis_activity extends AppCompatActivity {
         initList();
         initListAdapter();
         initTastList();
+        initButton();
+    }
+
+    private void initButton() {
+        addButton = (ImageButton) findViewById(R.id.ergebnisAddButton);
+        addButtonIntent = new Intent(ergebnis_activity.this, manuellesTracking_activity.class);
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(addButtonIntent);
+            }
+        });
     }
 
     private void initTastList() {

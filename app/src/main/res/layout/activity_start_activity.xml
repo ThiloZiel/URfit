@@ -61,7 +61,7 @@
         android:paddingRight="8dp"/>
 
     <Button
-        android:id="@+id/stop_Button"
+        android:id="@+id/addActivityButton"
         android:textColor="@color/GhostWhite"
         android:background="@color/red3"
         android:text="@string/stop_workout_Button"
