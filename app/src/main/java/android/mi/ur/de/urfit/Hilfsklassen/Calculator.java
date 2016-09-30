@@ -2,6 +2,8 @@ package android.mi.ur.de.urfit.Hilfsklassen;
 
 
 public class Calculator {
+
+    // zum rauslöschen
     private final static int FAST_JOGGING_KCAL_PER_HOUR = 840;
     private final static int SLOW_JOGGING_KCAL_PER_HOUR = 530;
     private final static double MAX_SLOW_KM_H = 7;

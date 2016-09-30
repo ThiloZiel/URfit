@@ -13,6 +13,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class URFitListAdapter extends ArrayAdapter<URFitItem>{
+    // zum rauslöschen
     private ArrayList<URFitItem> taskList;
     private Context context;
 

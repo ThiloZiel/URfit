@@ -9,6 +9,8 @@ import android.widget.EditText;
 
 public class profile_Activity extends AppCompatActivity {
 
+    // zum rauslöschen
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

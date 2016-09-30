@@ -17,6 +17,8 @@ import java.util.Date;
 import java.util.Locale;
 
 public class Database {
+
+    // zum rauslöschen
     public static final String LOG_TAGS = dbOpenHelper.class.getSimpleName();
     public static final String LOG_TAG = Database.class.getSimpleName();
 

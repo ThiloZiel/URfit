@@ -6,6 +6,7 @@ import java.util.GregorianCalendar;
 import java.util.Locale;
 
 public class URFitItem implements Comparable<URFitItem> {
+    // zum rauslöschen
     private String steps;
     private String calories;
     private GregorianCalendar cal;

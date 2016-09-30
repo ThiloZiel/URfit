@@ -22,6 +22,8 @@ import java.util.logging.Logger;
 
 public class start_activity extends AppCompatActivity implements SensorEventListener {
 
+    // zum rauslöschen
+
     // Quelle timer: http://www.tippscom.de/wie-du-eine-stoppuhr-app-in-android-programmierst/
 
 

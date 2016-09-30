@@ -18,6 +18,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity{
 
+    // zum rauslöschen
+
     private Button startButton;
     private Button ergebnisButton;
     private Button hilfeButton;
