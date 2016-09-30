@@ -205,7 +205,7 @@ public class start_activity extends AppCompatActivity implements SensorEventList
         mSensorManager.unregisterListener(this,mStepDetectorSensor);
         calcValues();
         nextURFitItem = new URFitItem(""+steps,n.format(kCal),mDay,mMonth,mYear);
-        MainActivity.dataSource.insertItem(nextURFitItem);
+        MainActivity.dataSource.insertURFitItem(nextURFitItem);
     }
 
     /*

@@ -7,31 +7,40 @@ package android.mi.ur.de.urfit.Hilfsklassen;
 public class UserAim {
 
     private String titel;
-    private double steps;
-    private double calories;
-    private Boolean reached;
+    private String steps;
+    private String calories;
+    private int reached;
 
-    public UserAim(String titel, double steps, double calories, Boolean reached){
+    public UserAim(String titel, String steps, String calories, Boolean reached){
 
         this.titel = titel;
-        this.steps = steps;
-        this.calories = calories;
-        this.reached = reached;
+        this.steps = steps+"";
+        this.calories = calories+"";
+        this.reached = isReached(reached);
+    }
+
+    private int isReached(Boolean reached) {
+        if (reached){
+            return 1;
+        } else {
+            return 0;
+        }
+
     }
 
     public String getTitel() {
         return titel;
     }
 
-    public double getSteps() {
+    public String getSteps() {
         return steps;
     }
 
-    public double getCalories() {
+    public String getCalories() {
         return calories;
     }
 
-    public Boolean getReached() {
+    public int getReached() {
         return reached;
     }
 }

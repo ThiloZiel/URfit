@@ -61,7 +61,7 @@ public class manuellesTracking_activity extends AppCompatActivity {
                 double calories = calc.calculateKcal();
                 calcDate();
                 URFitItem NextUrFitItem = new URFitItem(distance/74+1000+"", calories+"", day, month, year);
-                MainActivity.dataSource.insertItem(NextUrFitItem);
+                MainActivity.dataSource.insertURFitItem(NextUrFitItem);
 
                 startActivity(backIntent);
             }

@@ -8,9 +8,9 @@ public class User {
 
     private String name;
     private String Gender;
-    private double stepLength;
+    private String stepLength;
 
-    public User (String _name, Boolean _gender, double _stepLength){
+    public User (String _name, Boolean _gender, String _stepLength){
         name = _name;
         Gender = isMale(_gender);
         stepLength = _stepLength;
@@ -34,7 +34,7 @@ public class User {
         return Gender;
     }
 
-    public double getStepLength() {
+    public String getStepLength() {
         return stepLength;
     }
 }

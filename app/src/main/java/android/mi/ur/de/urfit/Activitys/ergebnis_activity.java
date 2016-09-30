@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
@@ -73,7 +72,7 @@ public class ergebnis_activity extends AppCompatActivity{
     private void removeTaskAtPosition(int position) {
         if (items.get(position) == null) {
         } else {
-            MainActivity.dataSource.removeItem(items.get(position));
+            MainActivity.dataSource.removeURFitItem(items.get(position));
             updateList();
         }
     }
