@@ -1,31 +1,24 @@
 package android.mi.ur.de.urfit.Activitys;
 
-import android.content.Context;
 import android.content.Intent;
 import android.mi.ur.de.urfit.Hilfsklassen.Database;
-import android.mi.ur.de.urfit.Hilfsklassen.URFitItem;
-import android.mi.ur.de.urfit.Hilfsklassen.URFitListAdapter;
 import android.mi.ur.de.urfit.R;
-import android.os.Parcelable;
-import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import java.util.ArrayList;
-
 public class MainActivity extends AppCompatActivity{
 
     private Button startButton;
     private Button ergebnisButton;
-    private Button hilfeButton;
+    private Button aimButton;
     private Button profilButton;
 
     private Intent startIntent;
     private Intent ergebnisIntent;
-    private Intent hilfeIntent;
+    private Intent aimIntent;
     private Intent profileIntent;
 
     //Database
@@ -54,7 +47,7 @@ public class MainActivity extends AppCompatActivity{
     private void initUI() {
         initStartButton();
         initErgebnisButton();
-        initHilfeButton();
+        initAimsButton();
         initProfileButton();
 
 
@@ -62,7 +55,7 @@ public class MainActivity extends AppCompatActivity{
 
     private void initProfileButton() {
         profilButton = (Button) findViewById(R.id.profilButton);
-        profileIntent = new Intent(MainActivity.this,profile_Activity.class);
+        profileIntent = new Intent(MainActivity.this,Profile_start_activity.class);
         profilButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,13 +64,13 @@ public class MainActivity extends AppCompatActivity{
         });
     }
 
-    private void initHilfeButton() {
-        hilfeButton = (Button) findViewById(R.id.hilfeButton);
-        hilfeIntent = new Intent(MainActivity.this,hilfe_activity.class);
-        hilfeButton.setOnClickListener(new View.OnClickListener() {
+    private void initAimsButton() {
+        aimButton = (Button) findViewById(R.id.AimsButton);
+        aimIntent = new Intent(MainActivity.this,aims_activity.class);
+        aimButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(hilfeIntent);
+                startActivity(aimIntent);
             }
         });
     }

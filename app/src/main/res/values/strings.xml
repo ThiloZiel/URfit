@@ -3,8 +3,7 @@
     <string name="start_workout_Button">Start Workout</string>
     <string name="meine_ergebnisse_Button">Meine Ergebnisse</string>
     <string name="profil_Button">Profil</string>
-    <string name="einstellungen_Button">Einstellungen</string>
-    <string name="hilfe_Button">Hilfe</string>
+    <string name="aim_Button_text">meine Ziele</string>
     <string name="title_activity_settings">Settings</string>
 
     <!-- Strings related to Settings -->
@@ -81,16 +80,11 @@
 
     <!-- Manuelles Tracking-->
     <!-- TextViews-->
-    <string name="workout_activity">Aktivität:</string>
-    <string name="time_spent">Dauer:</string>
-    <string name="activity_time">Startzeit:</string>
-    <string name="calories_loss">Kalorien:</string>
+    <string name="workout_distance">Entfernung in Meter: </string>
+    <string name="time_spent">Dauer in Sekunden: </string>
+    <string name="activity_date">Datum: </string>
+    <string name="calories_loss">Kalorien: </string>
     <string name="button_add_activity">Aktivität hinzufügen</string>
-
-    <!-- EditTexts-->
-    <string name="edit_activity">Durchgeführte Aktivität</string>
-    <string name="edit_time_spent">Geschätzte Dauer</string>
-    <string name="edit_date">Startzeit festlegen</string>
 
     <!-- Profil -->
     <!-- TextViews -->

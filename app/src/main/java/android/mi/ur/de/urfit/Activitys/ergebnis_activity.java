@@ -15,8 +15,6 @@ import java.util.ArrayList;
 
 public class ergebnis_activity extends AppCompatActivity{
 
-    // zum rauslöschen
-
     private ListView OverAll;
     private ArrayList<URFitItem> items = new ArrayList<>();
     private URFitListAdapter adapter;

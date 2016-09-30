@@ -34,7 +34,7 @@
                 android:value=".Activitys.MainActivity" />
         </activity>
         <activity
-            android:name=".Activitys.profile_Activity"
+            android:name=".Activitys.profile_change_Activity"
             android:label="@string/profile_Activity_Label"
             android:parentActivityName=".Activitys.MainActivity"
             android:theme="@style/AppTheme">
@@ -43,7 +43,7 @@
                 android:value=".Activitys.MainActivity" />
         </activity>
         <activity
-            android:name=".Activitys.hilfe_activity"
+            android:name=".Activitys.aims_activity"
             android:label="@string/hilfe_Activity_Label"
             android:parentActivityName=".Activitys.MainActivity"
             android:theme="@style/AppTheme">
@@ -51,7 +51,22 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activitys.MainActivity" />
         </activity>
-        <activity android:name=".Activitys.manuellesTracking_activity"></activity>
+        <activity android:name=".Activitys.manuellesTracking_activity"
+            android:label="Nachbesserung"
+            android:parentActivityName=".Activitys.MainActivity"
+            android:theme="@style/AppTheme">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".Activitys.MainActivity" />
+        </activity>
+        <activity android:name=".Activitys.Profile_start_activity"
+            android:label="Profil"
+            android:parentActivityName=".Activitys.MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activitys.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

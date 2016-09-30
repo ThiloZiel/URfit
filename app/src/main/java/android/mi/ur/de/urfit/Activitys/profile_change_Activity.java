@@ -9,12 +9,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 
-public class profile_Activity extends AppCompatActivity {
+public class profile_change_Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile_);
+        setContentView(R.layout.activity_profile_change);
         initUI();
     }
 
@@ -38,7 +38,7 @@ public class profile_Activity extends AppCompatActivity {
                 Boolean gender = genderEdit.isChecked();
                 String stepLength = stepLengthEdit.getText().toString();
 
-                MainActivity.dataSource.insertUser(new User(name,gender,stepLength));
+                MainActivity.dataSource.insertUser(new User(name,gender,stepLength,"1"));
 
             }
         });

@@ -4,7 +4,7 @@ import android.mi.ur.de.urfit.R;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class hilfe_activity extends AppCompatActivity {
+public class aims_activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

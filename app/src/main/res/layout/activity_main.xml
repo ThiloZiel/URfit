@@ -58,24 +58,14 @@
         android:layout_below="@id/main_row_2">
 
 
-
         <Button
-            android:background="#434196"
+            android:background="@color/aimButtonColor"
             android:textColor="@color/GhostWhite"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="@dimen/Button_Height"
-            android:text="@string/einstellungen_Button"
-            android:id="@+id/einstellungsButton" />
-
-        <Button
-            android:background="@color/hilfeButtonColor"
-            android:textColor="@color/GhostWhite"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="@dimen/Button_Height"
-            android:text="@string/hilfe_Button"
-            android:id="@+id/hilfeButton" />
+            android:text="@string/aim_Button_text"
+            android:id="@+id/AimsButton" />
 
 
     </LinearLayout>

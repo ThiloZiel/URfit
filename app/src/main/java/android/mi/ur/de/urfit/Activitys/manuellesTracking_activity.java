@@ -78,7 +78,7 @@ public class manuellesTracking_activity extends AppCompatActivity {
     private void initEditText() {
         distanceIntput = (EditText) findViewById(R.id.editText_distance);
         timeInput = (EditText) findViewById(R.id.editText_time_spent);
-        dateInput = (EditText) findViewById(R.id.editText_activity_time);
+        dateInput = (EditText) findViewById(R.id.editText_activity_date);
 
     }
 

@@ -9,15 +9,17 @@ public class User {
     private String name;
     private String Gender;
     private String stepLength;
+    private String level;
 
-    public User (String _name, Boolean _gender, String _stepLength){
+    public User (String _name, Boolean _gender, String _stepLength, String _level){
         name = _name;
         Gender = isMale(_gender);
         stepLength = _stepLength;
+        level = _level;
 
     }
 
-    private String isMale(Boolean _gender) {
+    public String isMale(Boolean _gender) {
         if (_gender){
             return "male";
         } else {
@@ -36,5 +38,15 @@ public class User {
 
     public String getStepLength() {
         return stepLength;
+    }
+
+    public String getLevel() {
+        return level;
+    }
+
+    public void nextLevel(){
+        int nextLevel = Integer.parseInt(level);
+        nextLevel++;
+        level = nextLevel+"";
     }
 }

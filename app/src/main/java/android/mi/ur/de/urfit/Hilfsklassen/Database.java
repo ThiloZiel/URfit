@@ -40,16 +40,18 @@ public class Database {
 
     // User
 
-    public static final String USER_TABLE = "user_list";
+    public static final String USER_TABLE = "users_list";
 
     public static final String USER_KEY_ID = "id";
     public static final String USER_KEY_NAME = "name";
     public static final String USER_KEY_GENDER = "gender";
     public static final String USER_KEY_STEP_LENGTH = "step_length";
+    public static final String USER_KEY_LEVEL = "level";
 
     public static final int USER_COLUMN_NAME_INDEX = 1;
     public static final int USER_COLUMN_GENDER_INDEX = 2;
     public static final int USER_COLUMN_STEP_LENGTH_INDEX = 3;
+    public static final int USER_COLUMN_LEVEL_INDEX = 4;
 
     // User Aim
 
@@ -108,6 +110,7 @@ public class Database {
         newUserValues.put(USER_KEY_NAME, newUser.getName());
         newUserValues.put(USER_KEY_GENDER, newUser.getGender());
         newUserValues.put(USER_KEY_STEP_LENGTH, newUser.getStepLength());
+        newUserValues.put(USER_KEY_LEVEL, newUser.getLevel());
 
         return db.insert(USER_TABLE,null, newUserValues);
     }
@@ -125,7 +128,8 @@ public class Database {
     public void removeUser(User user){
         String whereClause = USER_KEY_NAME + " = '" + user.getName() + "' AND "
                 + USER_KEY_GENDER + " = '" + user.getGender() + "' AND "
-                + USER_KEY_STEP_LENGTH + " = '" + user.getStepLength() + "'";
+                + USER_KEY_STEP_LENGTH + " = '" + user.getStepLength() + "' AND "
+                + USER_KEY_LEVEL + " = '" +  user.getLevel() + "'";
 
         db.delete(USER_TABLE, whereClause, null);
     }
@@ -149,13 +153,14 @@ public class Database {
 
     public ArrayList<User> getAllUser() {
         ArrayList<User> users = new ArrayList<User>();
-        Cursor cursor = db.query(USER_TABLE, new String[] {USER_KEY_ID, USER_KEY_NAME, USER_KEY_GENDER, USER_KEY_STEP_LENGTH}, null, null, null, null, null);
+        Cursor cursor = db.query(USER_TABLE, new String[] {USER_KEY_ID, USER_KEY_NAME, USER_KEY_GENDER, USER_KEY_STEP_LENGTH, USER_KEY_LEVEL}, null, null, null, null, null);
 
         if (cursor.moveToFirst()){
             do{
                 String name = cursor.getString(USER_COLUMN_NAME_INDEX);
                 String gender = cursor.getString(USER_COLUMN_GENDER_INDEX);
                 String stepLength = cursor.getString(USER_COLUMN_STEP_LENGTH_INDEX);
+                String level = cursor.getString(USER_COLUMN_LEVEL_INDEX);
                 Boolean _gender;
 
                 if (gender.equals("male")){
@@ -164,7 +169,7 @@ public class Database {
                     _gender = false;
                 }
 
-                users.add(new User(name,_gender,stepLength));
+                users.add(new User(name,_gender,stepLength,level));
             } while (cursor.moveToNext());
         }
     return users;
@@ -229,7 +234,8 @@ public class Database {
         private static final String USER_DATABASE_CREATE = "CREATE TABLE "
                 + USER_TABLE + " (" + USER_KEY_ID
                 + " INTEGER PRIMARY KEY AUTOINCREMENT, " + USER_KEY_NAME
-                + " TEXT, " + USER_KEY_GENDER + " TEXT, " + USER_KEY_STEP_LENGTH + " TEXT);";
+                + " TEXT, " + USER_KEY_GENDER + " TEXT, " + USER_KEY_STEP_LENGTH + " TEXT, "
+                + USER_KEY_LEVEL + " TEXT);";
 
         private static final String USER_AIM_DATABASE_CREATE = "CREATE TABLE "
                 + USER_AIM_TABLE + " (" + USER_AIM_KEY_ID
