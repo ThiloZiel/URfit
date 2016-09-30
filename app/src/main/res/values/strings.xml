@@ -94,17 +94,15 @@
 
     <!-- Profil -->
     <!-- TextViews -->
-    <string name="profil_age">Alter:</string>
+    <string name="profil_name">Name:</string>
     <string name="profil_gender">Geschlecht:</string>
-    <string name="profil_size">Größe:</string>
-    <string name="profil_weight">Gewicht:</string>
     <string name="profil_steplength">Schritttlänge:</string>
     <string name="button_add_profil">Profildaten speichern</string>
 
     <!-- EditTexts -->
-    <string name="edit_age">Enter Age</string>
+    <string name="edit_name">Enter Name</string>
     <string name="edit_gender">Enter Gender</string>
-    <string name="edit_size">Enter Size</string>
-    <string name="edit_weight">Enter Weight</string>
     <string name="edit_steplength">Enter Step Length</string>
+    <string name="switchOnText">männlich</string>
+    <string name="switchOffText">weiblich</string>
 </resources>

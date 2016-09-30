@@ -11,8 +11,8 @@
 
 
     <TextView
-        android:id="@+id/profil_age_text"
-        android:text="@string/profil_age"
+        android:id="@+id/profil_name_text"
+        android:text="@string/profil_name"
         android:textSize="26sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,13 +22,12 @@
         android:paddingRight="8dp"/>
 
     <EditText
-        android:id="@+id/editText_age"
+        android:id="@+id/editText_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/edit_age"
-        android:layout_below="@id/profil_age_text"
-        android:inputType="number"
-        android:layout_weight="1" />
+        android:hint="@string/edit_name"
+        android:layout_below="@id/profil_name_text"
+        android:inputType="number" />
 
     <TextView
         android:id="@+id/profil_gender_text"
@@ -36,75 +35,36 @@
         android:textSize="26sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editText_age"
+        android:layout_below="@id/editText_name"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"/>
 
-    <EditText
-        android:id="@+id/editText_gender"
+
+    <Switch
+        android:id="@+id/edit_gender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/edit_gender"
-        android:layout_below="@+id/profil_gender_text"
-        android:inputType="number"
-        android:layout_weight="1" />
-
-
-    <TextView
-        android:id="@+id/profil_size_text"
-        android:text="@string/profil_size"
-        android:textSize="26sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editText_gender"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"/>
-
-    <EditText
-        android:id="@+id/editText_size"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/edit_size"
-        android:layout_below="@+id/profil_size_text"
-        android:inputType="number"
-        android:layout_weight="1" />
+        android:checked="true"
+        android:layout_below="@id/profil_gender_text"
+        android:text="Notification"
+        android:textOff="No"
+        android:textOn="Yes"/>
 
     <TextView
-        android:id="@+id/profil_weight_text"
-        android:text="@string/profil_weight"
-        android:textSize="26sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editText_size"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"/>
+    android:id="@+id/profil_steplength_text"
+    android:text="@string/profil_steplength"
+    android:textSize="26sp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
+    android:layout_below="@+id/edit_gender"
+    android:layout_alignParentStart="true" />
 
-    <EditText
-        android:id="@+id/editText_weight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/edit_weight"
-        android:layout_below="@+id/profil_weight_text"
-        android:inputType="number"
-        android:layout_weight="1" />
-
-    <TextView
-        android:id="@+id/profil_steplength_text"
-        android:text="@string/profil_steplength"
-        android:textSize="26sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editText_weight"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"/>
 
     <EditText
         android:id="@+id/editText_steplength"
@@ -112,8 +72,9 @@
         android:layout_height="wrap_content"
         android:hint="@string/edit_steplength"
         android:layout_below="@+id/profil_steplength_text"
-        android:inputType="number"
-        android:layout_weight="1" />
+        android:inputType="number" />
+
+
 
 
     <Button
@@ -125,5 +86,7 @@
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+
 
 </RelativeLayout>
