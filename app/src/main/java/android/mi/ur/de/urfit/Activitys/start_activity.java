@@ -24,9 +24,8 @@ import java.util.logging.Logger;
 
 public class start_activity extends AppCompatActivity implements SensorEventListener {
 
-    // zum rauslöschen
-
     // Quelle timer: http://www.tippscom.de/wie-du-eine-stoppuhr-app-in-android-programmierst/
+    // Quelle Schrittzähler: http://blog.bawa.com/2013/11/create-your-own-simple-pedometer.html
 
 
     private SensorManager mSensorManager;

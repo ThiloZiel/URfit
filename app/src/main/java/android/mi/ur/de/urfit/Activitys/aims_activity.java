@@ -1,6 +1,5 @@
 package android.mi.ur.de.urfit.Activitys;
 
-import android.content.Intent;
 import android.mi.ur.de.urfit.Hilfsklassen.UserAim;
 import android.mi.ur.de.urfit.Hilfsklassen.UserAimListAdapter;
 import android.mi.ur.de.urfit.R;
@@ -46,11 +45,13 @@ public class aims_activity extends AppCompatActivity {
 
     }
 
+    // behinhaltet die initialisierung der editTexte und des Buttons
     private void initAdd() {
         initEdit();
         initButton();
     }
 
+    // initialisiert beim Aufrufen die EditTexte und speichert die Eingaben in passenden Variablen
     private void initEdit() {
         editAimTitel = (EditText) findViewById(R.id.edit_aims_titel);
         editAimSteps = (EditText) findViewById(R.id.edit_aims_steps);
@@ -59,6 +60,11 @@ public class aims_activity extends AppCompatActivity {
         steps = editAimSteps.getText().toString();
     }
 
+    /*
+    * initialisiert den Button
+    * registriert einen OnClickListener auf diesem.
+    * wenn der Button geklickt wird wird das UserAim element in der Datenbank gespeichert und die Methode UpdateList aufgerufen
+     */
     private void initButton() {
         addAim = (Button) findViewById(R.id.add_aim_button);
         addAim.setOnClickListener(new View.OnClickListener() {
@@ -71,15 +77,23 @@ public class aims_activity extends AppCompatActivity {
 
     }
 
+    // ruft die Methode updateList() auf
     private void initItemList() {
         updateList();
     }
 
+
+    // initialisiert den ListAdapter
     private void initListAdapter() {
         adapter = new UserAimListAdapter(this, userAims);
         aimListView.setAdapter(adapter);
     }
 
+    /*
+    * initialisiert den ListView
+    * registriert einen OnItemLongClickListener auf diesem
+    * durch langes klicken eines Elements kann dieses durch Aufruf der removeTaskAtPosition(int position) aus dem ListView gelöscht werden
+     */
     private void initList() {
         aimListView = (ListView) findViewById(R.id.aims_list_view);
         aimListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -93,6 +107,11 @@ public class aims_activity extends AppCompatActivity {
 
     }
 
+    /*
+    * erwartet die position des zu löschenden UserAim Elements als int Wert
+    * löscht das an der Position zu findende UserAim Element aus der Datenbank
+     */
+
     private void removeTaskAtPosition(int position) {
         if (userAims.get(position) == null) {
         } else {
@@ -101,6 +120,9 @@ public class aims_activity extends AppCompatActivity {
         }
     }
 
+    /*
+    löscht alle Elemente aus userAims um diese mit den neuen UserAim Elementen zu aktualisieren
+     */
     private void updateList() {
         userAims.clear();
         userAims.addAll(MainActivity.dataSource.getAllUserAims());

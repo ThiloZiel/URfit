@@ -12,8 +12,6 @@ import android.widget.EditText;
 
 public class manuellesTracking_activity extends AppCompatActivity {
 
-    // zum rauslöschen
-
     private EditText distanceIntput;
     private EditText timeInput;
     private EditText dateInput;

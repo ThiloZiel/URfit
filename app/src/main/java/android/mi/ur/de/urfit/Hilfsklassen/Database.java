@@ -29,39 +29,44 @@ public class Database {
 
     private static final String DATABASE_TABLE = "activity_list";
 
+
+    // URFitItem Schlüssel
     private static final String KEY_ID = "_id";
     private static final String KEY_DATE = "date";
     private static final String KEY_STEPS = "steps";
     private static final String KEY_CALORIES = "calories";
 
+    // URFitItem Reihen Indices
     private static final int COLUMN_DATE_INDEX = 1;
     private static final int COLUMN_STEPS_INDEX = 2;
     private static final int COLUMN_CALORIES_INDEX = 3;
 
     // User
-
     private static final String USER_TABLE = "users_list";
 
+    // User Schlüssel
     private static final String USER_KEY_ID = "id";
     private static final String USER_KEY_NAME = "name";
     private static final String USER_KEY_GENDER = "gender";
     private static final String USER_KEY_STEP_LENGTH = "step_length";
     private static final String USER_KEY_LEVEL = "level";
 
+    // User Reihen Indices
     private static final int USER_COLUMN_NAME_INDEX = 1;
     private static final int USER_COLUMN_GENDER_INDEX = 2;
     private static final int USER_COLUMN_STEP_LENGTH_INDEX = 3;
     private static final int USER_COLUMN_LEVEL_INDEX = 4;
 
-    // User Aim
-
+    // UserAim
     private static final String USER_AIM_TABLE = "user_aim_list";
 
+    // UserAim Schlüssel
     private static final String USER_AIM_KEY_ID = "id";
     private static final String USER_AIM_KEY_TITEL = "titel";
     private static final String USER_AIM_KEY_STEPS = "steps";
     private static final String USER_AIM_KEY_REACHED = "reached";
 
+    // UserAim Reihen Indices
     private static final int USER_AIM_COLUMN_TITEL_INDEX = 1;
     private static final int USER_AIM_COLUMN_STEPS_INDEX = 2;
     private static final int USER_AIM_COLUMN_REACHED_INDEX = 3;
@@ -91,6 +96,8 @@ public class Database {
         Log.d(LOG_TAG, "Datenbank mit Hilfe des DbHelpers geschlossen.");
     }
 
+
+    // fügt der UserAim Tabelle ein UserAim Element hinzu
     public long insertUserAim(UserAim newUserAim) {
         ContentValues newUserAimValues = new ContentValues();
 
@@ -101,6 +108,7 @@ public class Database {
         return db.insert(USER_AIM_TABLE, null, newUserAimValues);
     }
 
+    // fügt der User Tabelle ein User Element hinzu
     public long insertUser(User newUser) {
         ContentValues newUserValues = new ContentValues();
 
@@ -112,6 +120,7 @@ public class Database {
         return db.insert(USER_TABLE, null, newUserValues);
     }
 
+    // fügt der URFitItem Tabelle ein URFitItem Element hinzu
     public long insertURFitItem(URFitItem item) {
         ContentValues newURFitValues = new ContentValues();
 
@@ -122,6 +131,7 @@ public class Database {
         return db.insert(DATABASE_TABLE, null, newURFitValues);
     }
 
+    // entfernt ein User Element aus der User Tabelle
     public void removeUser(User user) {
         String whereClause = USER_KEY_NAME + " = '" + user.getName() + "' AND "
                 + USER_KEY_GENDER + " = '" + user.getGender() + "' AND "
@@ -131,6 +141,7 @@ public class Database {
         db.delete(USER_TABLE, whereClause, null);
     }
 
+    // entfernt ein UserAim Element aus der UserAim Tabelle
     public void removeUserAim(UserAim aim) {
         String whereClause = USER_AIM_KEY_TITEL + " = '" + aim.getTitel() + "' AND "
                 + USER_AIM_KEY_STEPS + " = '" + aim.getSteps() + "' AND "
@@ -139,6 +150,7 @@ public class Database {
         db.delete(USER_AIM_TABLE, whereClause, null);
     }
 
+    // entfernt ein URFitItem Element aus der URFitItemTabelle
     public void removeURFitItem(URFitItem item) {
         String whereClause = KEY_DATE + " = '" + item.getFormattedDate() + "' AND "
                 + KEY_STEPS + " = '" + item.getSteps() + "' AND "
@@ -147,6 +159,7 @@ public class Database {
         db.delete(DATABASE_TABLE, whereClause, null);
     }
 
+    // gibt alle User Elemente aus der User Tabelle als ArrayList zurück
     public ArrayList<User> getAllUser() {
         ArrayList<User> users = new ArrayList<>();
         Cursor cursor = db.query(USER_TABLE, new String[]{USER_KEY_ID, USER_KEY_NAME, USER_KEY_GENDER, USER_KEY_STEP_LENGTH, USER_KEY_LEVEL}, null, null, null, null, null);
@@ -172,7 +185,7 @@ public class Database {
         return users;
     }
 
-
+    //gibt alle UserAim Elemente aus der UserAim Tabelle als ArrayList zurück
     public ArrayList<UserAim> getAllUserAims() {
         ArrayList<UserAim> aims = new ArrayList<UserAim>();
         Cursor cursor = db.query(USER_AIM_TABLE, new String[]{USER_AIM_KEY_ID, USER_AIM_KEY_TITEL, USER_AIM_KEY_STEPS, USER_AIM_KEY_REACHED}, null, null, null, null, null);
@@ -193,6 +206,7 @@ public class Database {
         return aims;
     }
 
+    // gibt alle URFitItem Elemente aus der URFitItem Tabelle als ArrayList zurück
     public ArrayList<URFitItem> getAllURFitItems() {
         ArrayList<URFitItem> items = new ArrayList<URFitItem>();
         Cursor cursor = db.query(DATABASE_TABLE, new String[]{KEY_ID, KEY_DATE, KEY_STEPS, KEY_CALORIES}, null, null, null, null, null);
@@ -222,17 +236,21 @@ public class Database {
 
 
     private class dbOpenHelper extends SQLiteOpenHelper {
+
+        // Create Befehl für die URFitItem Tabelle
         private static final String DATABASE_CREATE = "CREATE TABLE "
                 + DATABASE_TABLE + " (" + KEY_ID
                 + " INTEGER PRIMARY KEY AUTOINCREMENT, " + KEY_DATE
                 + " TEXT, " + KEY_STEPS + " TEXT, " + KEY_CALORIES + " TEXT);";
 
+        // Create Befehl für die User Tabelle
         private static final String USER_DATABASE_CREATE = "CREATE TABLE "
                 + USER_TABLE + " (" + USER_KEY_ID
                 + " INTEGER PRIMARY KEY AUTOINCREMENT, " + USER_KEY_NAME
                 + " TEXT, " + USER_KEY_GENDER + " TEXT, " + USER_KEY_STEP_LENGTH + " TEXT, "
                 + USER_KEY_LEVEL + " TEXT);";
 
+        // Create Befehl für die UserAim Tabelle
         private static final String USER_AIM_DATABASE_CREATE = "CREATE TABLE "
                 + USER_AIM_TABLE + " (" + USER_AIM_KEY_ID
                 + " INTEGER PRIMARY KEY AUTOINCREMENT, " + USER_AIM_KEY_TITEL

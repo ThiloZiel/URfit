@@ -18,7 +18,7 @@ public class Calculator {
     }
 
     private double calculateSpeed() {
-        return ( distance) / (( time - pause) / 60);
+        return (distance) / ((time - pause) / 60);
     }
 
 
