@@ -12,14 +12,14 @@
 
     <TextView
         android:id="@+id/distance_done"
-        android:text="@string/workout_distance"
-        android:textSize="26sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="8dp"
         android:paddingBottom="8dp"
         android:paddingLeft="8dp"
-        android:paddingRight="8dp"/>
+        android:paddingRight="8dp"
+        android:paddingTop="8dp"
+        android:text="@string/workout_distance"
+        android:textSize="26sp" />
 
     <EditText
         android:id="@+id/editText_distance"
@@ -30,15 +30,15 @@
 
     <TextView
         android:id="@+id/activity_time"
-        android:text="@string/time_spent"
-        android:textSize="26sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/editText_distance"
-        android:paddingTop="8dp"
         android:paddingBottom="8dp"
         android:paddingLeft="8dp"
-        android:paddingRight="8dp"/>
+        android:paddingRight="8dp"
+        android:paddingTop="8dp"
+        android:text="@string/time_spent"
+        android:textSize="26sp" />
 
     <EditText
         android:id="@+id/editText_time_spent"
@@ -50,15 +50,15 @@
 
     <TextView
         android:id="@+id/date_activitiy"
-        android:text="@string/activity_date"
-        android:textSize="26sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editText_time_spent"
-        android:paddingTop="8dp"
         android:paddingBottom="8dp"
         android:paddingLeft="8dp"
-        android:paddingRight="8dp"/>
+        android:paddingRight="8dp"
+        android:paddingTop="8dp"
+        android:text="@string/activity_date"
+        android:textSize="26sp" />
 
     <EditText
         android:id="@+id/editText_activity_date"
@@ -67,27 +67,15 @@
         android:layout_below="@+id/date_activitiy"
         android:inputType="date" />
 
-    <TextView
-        android:id="@+id/calories_lost"
-        android:text="@string/calories_loss"
-        android:textSize="26sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editText_activity_date"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"/>
-
 
     <Button
         android:id="@+id/addActivityButton"
-        android:textColor="@color/GhostWhite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:background="@color/red3"
         android:text="@string/button_add_activity"
-        android:textSize="18sp"
-        android:layout_alignParentBottom="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:textColor="@color/GhostWhite"
+        android:textSize="18sp" />
 
 </RelativeLayout>

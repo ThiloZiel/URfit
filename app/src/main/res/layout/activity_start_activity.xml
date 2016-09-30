@@ -11,63 +11,38 @@
 
     <TextView
         android:id="@+id/number_Steps_View"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/ErgebnisButtonColor"
+        android:paddingBottom="8dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="8dp"
         android:text="@string/anzahl_schritte_view"
-        android:textSize="20sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"/>
+        android:textSize="20sp" />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/time_View"
-        android:background="@color/ErgebnisButtonColor"
-        android:text="@string/gelaufene_zeit_view"
-        android:textSize="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/number_Steps_View"
-        android:paddingTop="8dp"
+        android:background="@color/ErgebnisButtonColor"
         android:paddingBottom="8dp"
         android:paddingLeft="8dp"
-        android:paddingRight="8dp"/>
+        android:paddingRight="8dp"
+        android:paddingTop="8dp"
+        android:text="@string/gelaufene_zeit_view"
+        android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/persöhnliches_Tages_Ziel_View"
-        android:background="@color/profilButtonColor"
-        android:text="@string/mein_persoehnliches_tagesziel_text"
-        android:textSize="16sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/time_View"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"/>
-
-    <TextView
-        android:id="@+id/persöhnliches_Hauptziel"
-        android:background="@color/profilButtonColor"
-        android:text="@string/Hauptziel_text"
-        android:textSize="16sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/persöhnliches_Tages_Ziel_View"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"/>
 
     <Button
         android:id="@+id/addActivityButton"
-        android:textColor="@color/GhostWhite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:background="@color/red3"
         android:text="@string/stop_workout_Button"
-        android:textSize="18sp"
-        android:layout_alignParentBottom="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:textColor="@color/GhostWhite"
+        android:textSize="18sp" />
 
 </RelativeLayout>

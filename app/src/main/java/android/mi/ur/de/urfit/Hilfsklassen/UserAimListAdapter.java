@@ -1,26 +1,28 @@
 package android.mi.ur.de.urfit.Hilfsklassen;
 
-
 import android.content.Context;
 import android.mi.ur.de.urfit.R;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class URFitListAdapter extends ArrayAdapter<URFitItem> {
 
-    private ArrayList<URFitItem> URFitItemList;
+public class UserAimListAdapter extends ArrayAdapter<UserAim> {
+
+    private ArrayList<UserAim> userAimsList;
     private Context context;
 
-    public URFitListAdapter(Context context, ArrayList<URFitItem> listItems) {
-        super(context, R.layout.urfit_list_item, listItems);
+    public UserAimListAdapter(Context context, ArrayList<UserAim> listItems) {
+        super(context, R.layout.user_aim_list_item, listItems);
 
         this.context = context;
-        this.URFitItemList = listItems;
+        this.userAimsList = listItems;
+
     }
 
     @Override
@@ -31,20 +33,18 @@ public class URFitListAdapter extends ArrayAdapter<URFitItem> {
         if (v == null) {
             LayoutInflater inflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            v = inflater.inflate(R.layout.urfit_list_item, null);
+            v = inflater.inflate(R.layout.user_aim_list_item, null);
 
         }
 
-        URFitItem task = URFitItemList.get(position);
+        UserAim item = userAimsList.get(position);
 
-        if (task != null) {
+        if (item != null) {
             TextView steps = (TextView) v.findViewById(R.id.item_steps);
-            TextView calories = (TextView) v.findViewById(R.id.item_calories);
-            TextView date = (TextView) v.findViewById(R.id.item_date);
+            TextView titel = (TextView) v.findViewById(R.id.item_Titel);
 
-            steps.setText(task.getSteps());
-            calories.setText(task.getCalories());
-            date.setText(task.getFormattedDate());
+            steps.setText(item.getSteps());
+            titel.setText(item.getTitel());
         }
 
         return v;

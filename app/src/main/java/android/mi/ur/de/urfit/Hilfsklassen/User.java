@@ -1,8 +1,5 @@
 package android.mi.ur.de.urfit.Hilfsklassen;
 
-/**
- * Created by Thilo on 30.09.16.
- */
 
 public class User {
 
@@ -11,7 +8,7 @@ public class User {
     private String stepLength;
     private String level;
 
-    public User (String _name, Boolean _gender, String _stepLength, String _level){
+    public User(String _name, Boolean _gender, String _stepLength, String _level) {
         name = _name;
         Gender = isMale(_gender);
         stepLength = _stepLength;
@@ -19,8 +16,8 @@ public class User {
 
     }
 
-    public String isMale(Boolean _gender) {
-        if (_gender){
+    private String isMale(Boolean _gender) {
+        if (_gender) {
             return "male";
         } else {
             return "female";
@@ -44,9 +41,9 @@ public class User {
         return level;
     }
 
-    public void nextLevel(){
+    public void nextLevel() {
         int nextLevel = Integer.parseInt(level);
         nextLevel++;
-        level = nextLevel+"";
+        level = nextLevel + "";
     }
 }

@@ -28,8 +28,7 @@ public class Profile_start_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_start_activity);
-        //initUi();
-        initButton();
+        initUi();
     }
 
     private void initUi() {
@@ -41,7 +40,7 @@ public class Profile_start_activity extends AppCompatActivity {
 
     private void initButton() {
         changeProfile = (Button) findViewById(R.id.changeProfileButton);
-        changeButtonIntent =  new Intent(Profile_start_activity.this,profile_change_Activity.class);
+        changeButtonIntent = new Intent(Profile_start_activity.this, profile_change_Activity.class);
         changeProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,17 +51,22 @@ public class Profile_start_activity extends AppCompatActivity {
 
     private void initUser() {
         ArrayList<User> users = MainActivity.dataSource.getAllUser();
-        user = users.get(0);
+        if (users.size() != 0) {
+            user = users.get(0);
+        } else {
+            user = new User("Max Mustermann", true, "74", "1");
+        }
+
     }
 
     private void initTextView() {
         nameView = (TextView) findViewById(R.id.profile_name_view);
-        nameView.setText(user.getName());
+        nameView.setText("Name: " + user.getName());
         levelView = (TextView) findViewById(R.id.profile_level_view);
-        levelView.setText(user.getLevel());
+        levelView.setText("Level: " + user.getLevel());
         genderView = (TextView) findViewById(R.id.profile_gender_view);
-        genderView.setText(user.getGender());
+        genderView.setText("Geschlecht: " + user.getGender());
         stepLengthView = (TextView) findViewById(R.id.profile_step_length_view);
-        stepLengthView.setText(user.getStepLength());
+        stepLengthView.setText("Schrittlänge: " + user.getStepLength());
     }
 }

@@ -13,9 +13,9 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class ergebnis_activity extends AppCompatActivity{
+public class ergebnis_activity extends AppCompatActivity {
 
-    private ListView OverAll;
+    private ListView overAll;
     private ArrayList<URFitItem> items = new ArrayList<>();
     private URFitListAdapter adapter;
     private ImageButton addButton;
@@ -31,7 +31,7 @@ public class ergebnis_activity extends AppCompatActivity{
     private void initUI() {
         initList();
         initListAdapter();
-        initTastList();
+        initItemList();
         initButton();
     }
 
@@ -46,18 +46,18 @@ public class ergebnis_activity extends AppCompatActivity{
         });
     }
 
-    private void initTastList() {
+    private void initItemList() {
         updateList();
     }
 
     private void initListAdapter() {
         adapter = new URFitListAdapter(this, items);
-        OverAll.setAdapter(adapter);
+        overAll.setAdapter(adapter);
     }
 
     private void initList() {
-        OverAll = (ListView) findViewById(R.id.overAllView);
-        OverAll.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        overAll = (ListView) findViewById(R.id.overAllView);
+        overAll.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view,
                                            int position, long id) {

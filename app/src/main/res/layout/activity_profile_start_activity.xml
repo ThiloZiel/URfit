@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_profile_start_activity"
     android:layout_width="match_parent"
@@ -11,63 +10,54 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="android.mi.ur.de.urfit.Activitys.Profile_start_activity">
 
-    <LinearLayout
-        android:id="@+id/profile_first_row"
+    <TextView
+        android:id="@+id/profile_level_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:background="@color/ErgebnisButtonColor"
+        android:gravity="center"
+        android:text="@string/profile_start_level_text"
+        android:textColor="@color/GhostWhite"
+        android:textSize="25sp" />
 
-        <TextView
-            android:id="@+id/profile_name_view"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="Name: Max Mustermann"
-            android:textSize="20sp"
-            android:textColor="@color/GhostWhite"
-            android:background="@color/DodgerBlue4"/>
+    <TextView
+        android:id="@+id/profile_name_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profile_level_view"
+        android:background="@color/DodgerBlue4"
+        android:text="@string/profile_start_name_text"
+        android:textColor="@color/GhostWhite"
+        android:textSize="25sp" />
 
-
-         <TextView
-            android:id="@+id/profile_level_view"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:text="Level 1"
-            android:textColor="@color/DodgerBlue4"
-            android:background="@drawable/ic_level_star"/>
-
-    </LinearLayout>
 
     <TextView
         android:id="@+id/profile_gender_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Geschlecht: männlich"
-        android:textSize="20sp"
-        android:textColor="@color/GhostWhite"
-        android:background="@color/DodgerBlue4"
-        android:layout_below="@id/profile_first_row"/>
+        android:layout_below="@id/profile_name_view"
+        android:text="@string/profile_start_gender_text"
+        android:textColor="@color/DodgerBlue4"
+        android:textSize="25sp" />
 
     <TextView
         android:id="@+id/profile_step_length_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/profile_gender_view"
-        android:text="Schrittlänge: 74cm"
-        android:textSize="20sp"
-        android:textColor="@color/DodgerBlue4"/>
+        android:background="@color/DodgerBlue4"
+        android:text="@string/profile_start_step_text"
+        android:textColor="@color/GhostWhite"
+        android:textSize="25sp" />
 
     <Button
         android:id="@+id/changeProfileButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:text="Profil ändern"
-        android:textSize="20sp"
         android:background="@color/red3"
+        android:text="@string/profile_start_buttontext"
         android:textColor="@color/GhostWhite"
-        />
+        android:textSize="25sp" />
 
 </RelativeLayout>

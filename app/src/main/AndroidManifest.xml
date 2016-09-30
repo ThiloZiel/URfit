@@ -44,7 +44,7 @@
         </activity>
         <activity
             android:name=".Activitys.aims_activity"
-            android:label="@string/hilfe_Activity_Label"
+            android:label="@string/aim_Activity_Label"
             android:parentActivityName=".Activitys.MainActivity"
             android:theme="@style/AppTheme">
             <meta-data

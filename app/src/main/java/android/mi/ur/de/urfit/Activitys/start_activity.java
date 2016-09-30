@@ -8,6 +8,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.mi.ur.de.urfit.Hilfsklassen.Calculator;
 import android.mi.ur.de.urfit.Hilfsklassen.URFitItem;
+import android.mi.ur.de.urfit.Hilfsklassen.User;
 import android.mi.ur.de.urfit.R;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,11 +34,8 @@ public class start_activity extends AppCompatActivity implements SensorEventList
     private Sensor mStepDetectorSensor;
 
 
-
     private TextView stepView;
     private TextView timeView;
-    private TextView dailyAimView;
-    private TextView mainAimView;
     private Button stopButton;
 
     private Intent stopButtonIntent;
@@ -59,6 +58,8 @@ public class start_activity extends AppCompatActivity implements SensorEventList
 
     private NumberFormat n;
 
+    private User user;
+    private ArrayList<User> users;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,8 +128,6 @@ public class start_activity extends AppCompatActivity implements SensorEventList
     private void initTextViews() {
         stepView = (TextView) findViewById(R.id.number_Steps_View);
         timeView = (TextView) findViewById(R.id.time_View);
-        dailyAimView = (TextView) findViewById(R.id.persöhnliches_Tages_Ziel_View);
-        mainAimView = (TextView) findViewById(R.id.persöhnliches_Hauptziel);
     }
 
     /*
@@ -137,7 +136,7 @@ public class start_activity extends AppCompatActivity implements SensorEventList
 
     private void initStopButton() {
         stopButton = (Button) findViewById(R.id.addActivityButton);
-        stopButtonIntent = new Intent(start_activity.this,MainActivity.class);
+        stopButtonIntent = new Intent(start_activity.this, MainActivity.class);
         stopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -154,16 +153,27 @@ public class start_activity extends AppCompatActivity implements SensorEventList
      */
 
     private void calcValues() {
-        if(steps == 0){
+        UsersfromDatabase();
+        if (steps == 0) {
             distance = 0;
             kCal = 0;
         } else {
             //strecke in KM
-            distance = (steps * 74) / 1000;
+            distance = (steps * Double.parseDouble(user.getStepLength())) / 1000;
             //werte für Calculator setzten (Entfernung,Zeit,Pausen)
             calc.setValues(distance, time, 0);
             kCal = calc.calculateKcal();
         }
+    }
+
+    private void UsersfromDatabase() {
+        users = MainActivity.dataSource.getAllUser();
+        if (users.size() != 0) {
+            user = users.get(0);
+        } else {
+            user = new User("Max Mustermann", true, "74", "1");
+        }
+
     }
 
     @Override
@@ -172,11 +182,11 @@ public class start_activity extends AppCompatActivity implements SensorEventList
         float[] values = event.values;
         steps = -1;
 
-        if (values.length > 0){
+        if (values.length > 0) {
             steps = (int) values[0];
         }
 
-        if(sensor.getType() == Sensor.TYPE_STEP_DETECTOR){
+        if (sensor.getType() == Sensor.TYPE_STEP_DETECTOR) {
             stepView.setText("Bisher gelaufene Schritte: " + steps);
         }
     }
@@ -186,11 +196,11 @@ public class start_activity extends AppCompatActivity implements SensorEventList
 
     }
 
-    protected void onResume(){
+    protected void onResume() {
         super.onResume();
 
-        mSensorManager.registerListener(this,mStepCounterSensor, SensorManager.SENSOR_DELAY_FASTEST);
-        mSensorManager.registerListener(this,mStepDetectorSensor,SensorManager.SENSOR_DELAY_FASTEST);
+        mSensorManager.registerListener(this, mStepCounterSensor, SensorManager.SENSOR_DELAY_FASTEST);
+        mSensorManager.registerListener(this, mStepDetectorSensor, SensorManager.SENSOR_DELAY_FASTEST);
 
     }
 
@@ -199,12 +209,12 @@ public class start_activity extends AppCompatActivity implements SensorEventList
         super.onPause();
     }
 
-    protected void onStop(){
+    protected void onStop() {
         super.onStop();
-        mSensorManager.unregisterListener(this,mStepCounterSensor);
-        mSensorManager.unregisterListener(this,mStepDetectorSensor);
+        mSensorManager.unregisterListener(this, mStepCounterSensor);
+        mSensorManager.unregisterListener(this, mStepDetectorSensor);
         calcValues();
-        nextURFitItem = new URFitItem(""+steps,n.format(kCal),mDay,mMonth,mYear);
+        nextURFitItem = new URFitItem("" + steps, n.format(kCal), mDay, mMonth, mYear);
         MainActivity.dataSource.insertURFitItem(nextURFitItem);
     }
 

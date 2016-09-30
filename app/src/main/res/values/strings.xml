@@ -71,7 +71,7 @@
     <string name="Start_Activity_Label">Workout</string>
     <string name="Ergebnis_Activity_Label">Auswertung</string>
     <string name="profile_Activity_Label">Mein Profil</string>
-    <string name="hilfe_Activity_Label">hilfe</string>
+    <string name="aim_Activity_Label">Meine Ziele</string>
     <string name="stop_workout_Button">Stop Workout!</string>
     <string name="anzahl_schritte_view">bisher gelaufene Schritte: -</string>
     <string name="mein_persoehnliches_tagesziel_text">Mein persönliches Tagesziel:</string>
@@ -99,4 +99,20 @@
     <string name="edit_steplength">Enter Step Length</string>
     <string name="switchOnText">männlich</string>
     <string name="switchOffText">weiblich</string>
+
+    <!-- Ergebnisse -->
+    <string name="ergebnis_Kalorien">Kalorien</string>
+    <string name="ergebnis_Schritte">Schritte</string>
+    <string name="ergebnis_Datum">Datum</string>
+    <string name="profile_start_level_text">Level 1</string>
+    <string name="profile_start_name_text">Name: Max Mustermann</string>
+    <string name="profile_start_gender_text">Geschlecht: männlich</string>
+    <string name="profile_start_step_text">Schrittlänge: 74cm</string>
+    <string name="profile_start_buttontext">Profil ändern</string>
+    <string name="aims_titel_edit_hint">Titel</string>
+    <string name="aims_steps_edit_hint">Anzahl Schritte</string>
+    <string name="aims_addbutton_text">Hinzufügen</string>
+    <string name="profile_change_female_text">Weiblich</string>
+    <string name="profile_change_male_text">Männlich</string>
+
 </resources>

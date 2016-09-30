@@ -11,27 +11,27 @@ public class URFitItem implements Comparable<URFitItem> {
     private String calories;
     private GregorianCalendar cal;
 
-    public URFitItem(String steps, String calories, int day, int month, int year){
+    public URFitItem(String steps, String calories, int day, int month, int year) {
         this.steps = steps;
         this.calories = calories;
-        cal = new GregorianCalendar(year,month,day);
+        cal = new GregorianCalendar(year, month, day);
     }
 
-    public String getCalories(){
+    public String getCalories() {
         return calories;
     }
 
-    public String getSteps(){
+    public String getSteps() {
         return steps;
     }
 
-    public String getFormattedDate(){
+    public String getFormattedDate() {
         DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.SHORT, Locale.GERMANY);
 
         return dateFormat.format(cal.getTime());
     }
 
-    private Date getDueDate(){
+    private Date getDueDate() {
         return cal.getTime();
     }
 

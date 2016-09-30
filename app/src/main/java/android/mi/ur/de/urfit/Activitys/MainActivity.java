@@ -9,7 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
 
     private Button startButton;
     private Button ergebnisButton;
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity{
 
     private void initProfileButton() {
         profilButton = (Button) findViewById(R.id.profilButton);
-        profileIntent = new Intent(MainActivity.this,Profile_start_activity.class);
+        profileIntent = new Intent(MainActivity.this, Profile_start_activity.class);
         profilButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity{
 
     private void initAimsButton() {
         aimButton = (Button) findViewById(R.id.AimsButton);
-        aimIntent = new Intent(MainActivity.this,aims_activity.class);
+        aimIntent = new Intent(MainActivity.this, aims_activity.class);
         aimButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity{
     }
 
     private void initErgebnisButton() {
-        ergebnisIntent = new Intent(MainActivity.this,ergebnis_activity.class);
+        ergebnisIntent = new Intent(MainActivity.this, ergebnis_activity.class);
         ergebnisButton = (Button) findViewById(R.id.ergebnisButton);
         ergebnisButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity{
 
     private void initStartButton() {
         startButton = (Button) findViewById(R.id.startButton);
-        startIntent = new Intent(MainActivity.this,start_activity.class);
+        startIntent = new Intent(MainActivity.this, start_activity.class);
         startIntent.putExtra("Database", String.valueOf(dataSource));
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity{
         });
     }
 
-    protected void onDestroy(){
+    protected void onDestroy() {
         Log.d(LOG_TAG, "Die Datenquelle wird geschlossen.");
         dataSource.close();
         super.onStop();

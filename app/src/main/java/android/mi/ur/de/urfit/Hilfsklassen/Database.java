@@ -18,70 +18,68 @@ import java.util.Locale;
 
 public class Database {
 
-    public static final String LOG_TAGS = dbOpenHelper.class.getSimpleName();
-    public static final String LOG_TAG = Database.class.getSimpleName();
+    private static final String LOG_TAGS = dbOpenHelper.class.getSimpleName();
+    private static final String LOG_TAG = Database.class.getSimpleName();
 
 
-    private static final String DATABASE_NAME = "urfit.db";
+    private static final String DATABASE_NAME = "urfitDatenbank.db";
     private static final int DATABASE_VERSION = 1;
 
     // URFitItem
 
     private static final String DATABASE_TABLE = "activity_list";
 
-    public static final String KEY_ID = "_id";
-    public static final String KEY_DATE ="date";
-    public static final String KEY_STEPS = "steps";
-    public static final String KEY_CALORIES = "calories";
+    private static final String KEY_ID = "_id";
+    private static final String KEY_DATE = "date";
+    private static final String KEY_STEPS = "steps";
+    private static final String KEY_CALORIES = "calories";
 
-    public static final int COLUMN_DATE_INDEX = 1;
-    public static final int COLUMN_STEPS_INDEX = 2;
-    public static final int COLUMN_CALORIES_INDEX = 3;
+    private static final int COLUMN_DATE_INDEX = 1;
+    private static final int COLUMN_STEPS_INDEX = 2;
+    private static final int COLUMN_CALORIES_INDEX = 3;
 
     // User
 
-    public static final String USER_TABLE = "users_list";
+    private static final String USER_TABLE = "users_list";
 
-    public static final String USER_KEY_ID = "id";
-    public static final String USER_KEY_NAME = "name";
-    public static final String USER_KEY_GENDER = "gender";
-    public static final String USER_KEY_STEP_LENGTH = "step_length";
-    public static final String USER_KEY_LEVEL = "level";
+    private static final String USER_KEY_ID = "id";
+    private static final String USER_KEY_NAME = "name";
+    private static final String USER_KEY_GENDER = "gender";
+    private static final String USER_KEY_STEP_LENGTH = "step_length";
+    private static final String USER_KEY_LEVEL = "level";
 
-    public static final int USER_COLUMN_NAME_INDEX = 1;
-    public static final int USER_COLUMN_GENDER_INDEX = 2;
-    public static final int USER_COLUMN_STEP_LENGTH_INDEX = 3;
-    public static final int USER_COLUMN_LEVEL_INDEX = 4;
+    private static final int USER_COLUMN_NAME_INDEX = 1;
+    private static final int USER_COLUMN_GENDER_INDEX = 2;
+    private static final int USER_COLUMN_STEP_LENGTH_INDEX = 3;
+    private static final int USER_COLUMN_LEVEL_INDEX = 4;
 
     // User Aim
 
-    public static final String USER_AIM_TABLE = "user_aim_list";
+    private static final String USER_AIM_TABLE = "user_aim_list";
 
-    public static final String USER_AIM_KEY_ID = "id";
-    public static final String USER_AIM_KEY_TITEL = "titel";
-    public static final String USER_AIM_KEY_STEPS = "steps";
-    public static final String USER_AIM_KEY_CALORIES = "calories";
-    public static final String USER_AIM_KEY_REACHED = "reached";
+    private static final String USER_AIM_KEY_ID = "id";
+    private static final String USER_AIM_KEY_TITEL = "titel";
+    private static final String USER_AIM_KEY_STEPS = "steps";
+    private static final String USER_AIM_KEY_REACHED = "reached";
 
-    public static final int USER_AIM_COLUMN_TITEL_INDEX = 1;
-    public static final int USER_AIM_COLUMN_STEPS_INDEX = 2;
-    public static final int USER_AIM_COLUMN_CALORIES_INDEX = 3;
-    public static final int USER_AIM_COLUMN_REACHED_INDEX = 4;
+    private static final int USER_AIM_COLUMN_TITEL_INDEX = 1;
+    private static final int USER_AIM_COLUMN_STEPS_INDEX = 2;
+    private static final int USER_AIM_COLUMN_REACHED_INDEX = 3;
 
 
     private dbOpenHelper dbHelper;
 
     private SQLiteDatabase db;
 
-    public Database(Context context){
-        dbHelper = new dbOpenHelper(context,DATABASE_NAME,null,DATABASE_VERSION);
+    public Database(Context context) {
+        dbHelper = new dbOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    public void open() throws SQLException{
+    public void open() throws SQLException {
         try {
             Log.d(LOG_TAG, "Eine Referenz auf die Datenbank wird jetzt angefragt.");
             db = dbHelper.getWritableDatabase();
-        } catch (SQLException e){
+        } catch (SQLException e) {
             Log.d(LOG_TAG, "Datenbank-Referenz erhalten. Pfad zur Datenbank: " + db.getPath());
             db = dbHelper.getReadableDatabase();
         }
@@ -93,18 +91,17 @@ public class Database {
         Log.d(LOG_TAG, "Datenbank mit Hilfe des DbHelpers geschlossen.");
     }
 
-    public long insertUserAim(UserAim newUserAim){
+    public long insertUserAim(UserAim newUserAim) {
         ContentValues newUserAimValues = new ContentValues();
 
         newUserAimValues.put(USER_AIM_KEY_TITEL, newUserAim.getTitel());
         newUserAimValues.put(USER_AIM_KEY_STEPS, newUserAim.getSteps());
-        newUserAimValues.put(USER_AIM_KEY_CALORIES, newUserAim.getCalories());
         newUserAimValues.put(USER_AIM_KEY_REACHED, newUserAim.getReached());
 
-        return db.insert(USER_AIM_TABLE,null, newUserAimValues);
+        return db.insert(USER_AIM_TABLE, null, newUserAimValues);
     }
 
-    public long insertUser(User newUser){
+    public long insertUser(User newUser) {
         ContentValues newUserValues = new ContentValues();
 
         newUserValues.put(USER_KEY_NAME, newUser.getName());
@@ -112,10 +109,10 @@ public class Database {
         newUserValues.put(USER_KEY_STEP_LENGTH, newUser.getStepLength());
         newUserValues.put(USER_KEY_LEVEL, newUser.getLevel());
 
-        return db.insert(USER_TABLE,null, newUserValues);
+        return db.insert(USER_TABLE, null, newUserValues);
     }
 
-    public long insertURFitItem(URFitItem item){
+    public long insertURFitItem(URFitItem item) {
         ContentValues newURFitValues = new ContentValues();
 
         newURFitValues.put(KEY_DATE, item.getFormattedDate());
@@ -125,20 +122,19 @@ public class Database {
         return db.insert(DATABASE_TABLE, null, newURFitValues);
     }
 
-    public void removeUser(User user){
+    public void removeUser(User user) {
         String whereClause = USER_KEY_NAME + " = '" + user.getName() + "' AND "
                 + USER_KEY_GENDER + " = '" + user.getGender() + "' AND "
                 + USER_KEY_STEP_LENGTH + " = '" + user.getStepLength() + "' AND "
-                + USER_KEY_LEVEL + " = '" +  user.getLevel() + "'";
+                + USER_KEY_LEVEL + " = '" + user.getLevel() + "'";
 
         db.delete(USER_TABLE, whereClause, null);
     }
 
-    public void removeUserAim(UserAim aim){
+    public void removeUserAim(UserAim aim) {
         String whereClause = USER_AIM_KEY_TITEL + " = '" + aim.getTitel() + "' AND "
                 + USER_AIM_KEY_STEPS + " = '" + aim.getSteps() + "' AND "
-                + USER_AIM_KEY_CALORIES + " = '" + aim.getCalories() + "' AND "
-                + USER_AIM_KEY_REACHED + " = '" + aim.getReached() + "'";
+                + "' AND " + USER_AIM_KEY_REACHED + " = '" + aim.getReached() + "'";
 
         db.delete(USER_AIM_TABLE, whereClause, null);
     }
@@ -152,56 +148,56 @@ public class Database {
     }
 
     public ArrayList<User> getAllUser() {
-        ArrayList<User> users = new ArrayList<User>();
-        Cursor cursor = db.query(USER_TABLE, new String[] {USER_KEY_ID, USER_KEY_NAME, USER_KEY_GENDER, USER_KEY_STEP_LENGTH, USER_KEY_LEVEL}, null, null, null, null, null);
+        ArrayList<User> users = new ArrayList<>();
+        Cursor cursor = db.query(USER_TABLE, new String[]{USER_KEY_ID, USER_KEY_NAME, USER_KEY_GENDER, USER_KEY_STEP_LENGTH, USER_KEY_LEVEL}, null, null, null, null, null);
 
-        if (cursor.moveToFirst()){
-            do{
+        if (cursor.moveToFirst()) {
+            do {
                 String name = cursor.getString(USER_COLUMN_NAME_INDEX);
                 String gender = cursor.getString(USER_COLUMN_GENDER_INDEX);
                 String stepLength = cursor.getString(USER_COLUMN_STEP_LENGTH_INDEX);
                 String level = cursor.getString(USER_COLUMN_LEVEL_INDEX);
                 Boolean _gender;
 
-                if (gender.equals("male")){
+                if (gender.equals("male")) {
                     _gender = true;
                 } else {
                     _gender = false;
                 }
 
-                users.add(new User(name,_gender,stepLength,level));
+                users.add(new User(name, _gender, stepLength, level));
             } while (cursor.moveToNext());
         }
-    return users;
+        cursor.close();
+        return users;
     }
 
 
     public ArrayList<UserAim> getAllUserAims() {
         ArrayList<UserAim> aims = new ArrayList<UserAim>();
-        Cursor cursor = db.query(USER_AIM_TABLE, new String[] {USER_AIM_KEY_ID, USER_AIM_KEY_TITEL, USER_AIM_KEY_STEPS, USER_AIM_KEY_CALORIES, USER_AIM_KEY_REACHED}, null, null, null, null, null);
-        if (cursor.moveToFirst()){
+        Cursor cursor = db.query(USER_AIM_TABLE, new String[]{USER_AIM_KEY_ID, USER_AIM_KEY_TITEL, USER_AIM_KEY_STEPS, USER_AIM_KEY_REACHED}, null, null, null, null, null);
+        if (cursor.moveToFirst()) {
             do {
                 String titel = cursor.getString(USER_AIM_COLUMN_TITEL_INDEX);
                 String steps = cursor.getString(USER_AIM_COLUMN_STEPS_INDEX);
-                String calories = cursor.getString(USER_AIM_COLUMN_CALORIES_INDEX);
                 boolean reached = false;
-                if (cursor.getInt(USER_AIM_COLUMN_REACHED_INDEX) == 1){
+                if (cursor.getInt(USER_AIM_COLUMN_REACHED_INDEX) == 1) {
                     reached = true;
                 }
 
 
-                aims.add(new UserAim(titel,steps,calories,reached));
+                aims.add(new UserAim(titel, steps, reached));
             } while (cursor.moveToNext());
         }
-
+        cursor.close();
         return aims;
     }
 
     public ArrayList<URFitItem> getAllURFitItems() {
         ArrayList<URFitItem> items = new ArrayList<URFitItem>();
-        Cursor cursor = db.query(DATABASE_TABLE, new String[] {KEY_ID, KEY_DATE, KEY_STEPS, KEY_CALORIES}, null, null, null, null, null);
-        if(cursor.moveToFirst()){
-            do{
+        Cursor cursor = db.query(DATABASE_TABLE, new String[]{KEY_ID, KEY_DATE, KEY_STEPS, KEY_CALORIES}, null, null, null, null, null);
+        if (cursor.moveToFirst()) {
+            do {
                 String date = cursor.getString(COLUMN_DATE_INDEX);
                 String steps = cursor.getString(COLUMN_STEPS_INDEX);
                 String calories = cursor.getString(COLUMN_CALORIES_INDEX);
@@ -209,7 +205,7 @@ public class Database {
                 Date formatedDate = null;
                 try {
                     formatedDate = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN).parse(date);
-                } catch (ParseException e){
+                } catch (ParseException e) {
                     e.printStackTrace();
                 }
 
@@ -220,9 +216,9 @@ public class Database {
                         cal.get(Calendar.MONTH), cal.get(Calendar.YEAR)));
             } while (cursor.moveToNext());
         }
+        cursor.close();
         return items;
     }
-
 
 
     private class dbOpenHelper extends SQLiteOpenHelper {
@@ -240,10 +236,10 @@ public class Database {
         private static final String USER_AIM_DATABASE_CREATE = "CREATE TABLE "
                 + USER_AIM_TABLE + " (" + USER_AIM_KEY_ID
                 + " INTEGER PRIMARY KEY AUTOINCREMENT, " + USER_AIM_KEY_TITEL
-                + " TEXT, " + USER_AIM_KEY_STEPS + " TEXT, " + USER_AIM_KEY_CALORIES + " TEXT, "
+                + " TEXT, " + USER_AIM_KEY_STEPS + " TEXT, "
                 + USER_AIM_KEY_REACHED + " INTEGER);";
 
-        public dbOpenHelper(Context c, String dbname, SQLiteDatabase.CursorFactory factory, int version){
+        public dbOpenHelper(Context c, String dbname, SQLiteDatabase.CursorFactory factory, int version) {
             super(c, dbname, factory, version);
             Log.d(LOG_TAGS, "DbHelper hat die Datenbank: " + getDatabaseName() + " erzeugt.");
         }
@@ -258,8 +254,7 @@ public class Database {
                 Log.d(LOG_TAGS, "Die Tabelle wird mit SQL-Befehl: " + USER_AIM_DATABASE_CREATE + " angelegt.");
                 db.execSQL(USER_AIM_DATABASE_CREATE);
 
-            }
-            catch (Exception ex) {
+            } catch (Exception ex) {
                 Log.e(LOG_TAGS, "Fehler beim Anlegen der Tabelle: " + ex.getMessage());
             }
         }

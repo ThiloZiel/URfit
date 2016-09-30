@@ -49,7 +49,7 @@ public class manuellesTracking_activity extends AppCompatActivity {
 
     private void initButton() {
         addButton = (Button) findViewById(R.id.addActivityButton);
-        final Intent backIntent =  new Intent(manuellesTracking_activity.this,ergebnis_activity.class);
+        final Intent backIntent = new Intent(manuellesTracking_activity.this, ergebnis_activity.class);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,10 +57,10 @@ public class manuellesTracking_activity extends AppCompatActivity {
                 distance = Double.parseDouble(distanceIntput.getText().toString());
                 time = Double.parseDouble(timeInput.getText().toString());
                 date = dateInput.getText().toString();
-                calc.setValues(distance,time,0);
+                calc.setValues(distance, time, 0);
                 double calories = calc.calculateKcal();
                 calcDate();
-                URFitItem NextUrFitItem = new URFitItem(distance/74+1000+"", calories+"", day, month, year);
+                URFitItem NextUrFitItem = new URFitItem(distance / 74 + 1000 + "", calories + "", day, month, year);
                 MainActivity.dataSource.insertURFitItem(NextUrFitItem);
 
                 startActivity(backIntent);
@@ -69,9 +69,9 @@ public class manuellesTracking_activity extends AppCompatActivity {
     }
 
     private void calcDate() {
-        day = Integer.parseInt(date.substring(0,1));
-        month = Integer.parseInt(date.substring(3,4));
-        year = Integer.parseInt(date.substring(5,6));
+        day = Integer.parseInt(date.substring(0, 1));
+        month = Integer.parseInt(date.substring(3, 4));
+        year = Integer.parseInt(date.substring(5, 6));
 
     }
 

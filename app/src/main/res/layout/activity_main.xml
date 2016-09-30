@@ -10,62 +10,61 @@
     tools:context=".Activitys.MainActivity">
 
     <Button
-        android:background="@color/DodgerBlue4"
-        android:drawableLeft="@drawable/ic_start_button"
-        android:textColor="@color/GhostWhite"
+        android:id="@+id/startButton"
         android:layout_width="match_parent"
         android:layout_height="@dimen/Button_Height"
-        android:text="@string/start_workout_Button"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:id="@+id/startButton"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:background="@color/DodgerBlue4"
+        android:drawableLeft="@drawable/ic_start_button"
+        android:text="@string/start_workout_Button"
+        android:textColor="@color/GhostWhite"
+        android:textSize="25sp"
+        android:textStyle="bold" />
 
 
     <LinearLayout
         android:id="@+id/main_row_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@id/startButton">
-
+        android:layout_below="@id/startButton"
+        android:orientation="horizontal">
 
 
         <Button
+            android:id="@+id/ergebnisButton"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/Button_Height"
+            android:layout_weight="1"
             android:background="@color/ErgebnisButtonColor"
-            android:textColor="@color/GhostWhite"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="@dimen/Button_Height"
             android:text="@string/meine_ergebnisse_Button"
-            android:id="@+id/ergebnisButton" />
+            android:textColor="@color/GhostWhite" />
 
         <Button
+            android:id="@+id/profilButton"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="@dimen/Button_Height"
+            android:layout_weight="1"
             android:background="@color/profilButtonColor"
-            android:text="@string/profil_Button"
-            android:id="@+id/profilButton" />
+            android:text="@string/profil_Button" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@id/main_row_2">
+        android:layout_below="@id/main_row_2"
+        android:orientation="horizontal">
 
 
         <Button
-            android:background="@color/aimButtonColor"
-            android:textColor="@color/GhostWhite"
+            android:id="@+id/AimsButton"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="@dimen/Button_Height"
+            android:layout_weight="1"
+            android:background="@color/aimButtonColor"
             android:text="@string/aim_Button_text"
-            android:id="@+id/AimsButton" />
+            android:textColor="@color/GhostWhite" />
 
 
     </LinearLayout>
